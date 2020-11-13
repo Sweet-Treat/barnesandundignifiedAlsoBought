@@ -1,7 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App.jsx'
+import Carousel from './components/Carousel.jsx'
 
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      something: 0
+    }
+  }
 
+  render() {
+    return (
+      <Carousel />
+    )
+  }
+}
 
-ReactDOM.render(<h1>Hello</h1>, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));

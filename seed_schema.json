@@ -1,0 +1,6 @@
+{
+  "_id": "{{counter()}}",
+  "name": "{{chance.name()}}",
+  "phones": [ 3, "{{chance.phone()}}" ],
+  "title": "Software {{util.sample(['Engineer', 'Programmer'])}}"
+}
