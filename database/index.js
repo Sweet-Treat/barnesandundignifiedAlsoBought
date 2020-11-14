@@ -15,4 +15,15 @@ let bookSchema = mongoose.Schema({
 
 let Book = mongoose.model('Book', bookSchema);
 
+let getData = (callback) => {
+  Book.find({}, (err, data) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, data);
+    }
+  }).limit(10)
+}
+
 module.exports = Book;
+module.exports.getData = getData;

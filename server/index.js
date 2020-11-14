@@ -7,8 +7,14 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+app.get('/getBooks', (req, res) => {
+  db.getData((err, data) => {
+    if (err) {
+      res.status(500).send('GET error:', err);
+    } else {
+      res.status(200).send(data)
+    }
+  })
 })
 
 app.listen(port, () => {
