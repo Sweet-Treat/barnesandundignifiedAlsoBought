@@ -13,6 +13,8 @@ class App extends React.Component {
       isLoading: true
     }
     this.getData = this.getData.bind(this);
+    this.leftClick = this.leftClick.bind(this);
+    this.rightClick = this.rightClick.bind(this);
   }
 
   getData(data) {
@@ -31,13 +33,31 @@ class App extends React.Component {
     this.getData()
   }
 
+  leftClick() {
+    console.log('left!');
+  }
+
+  rightClick() {
+    console.log('right!');
+  }
+
   render() {
     if (this.state.isLoading) {
       return (<h1 style={{textAlign: "center"}}>Loading...</h1>)
     }
 
     return (
-      <Carousel books={this.state}/>
+      <div>
+        <h2 class="header">
+          Customers Who Bought This Item Also Bought
+          </h2>
+        <Carousel
+          books={this.state}
+          leftClick={this.leftClick}
+          rightClick={this.rightClick}
+
+        />
+      </div>
     )
   }
 
