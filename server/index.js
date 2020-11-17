@@ -8,10 +8,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 // Retrieve dummy seed data
-// app.get('/getBooks/:isbn', (req, res) => {
-//   db.getData(req, (err, data) => {
-app.get('/getBooks/', (req, res) => {
-  db.getData((err, data) => {
+app.get('/getBooks/:relatedIsbn', (req, res) => {
+  db.getData(req, (err, data) => {
+// app.get('/getBooks/', (req, res) => {
+//   db.getData((err, data) => {
     if (err) {
       res.status(500).send(err);
     } else {

@@ -78,6 +78,7 @@ let seedData = () => {
     var random = Math.floor(Math.random() * 100);
 
   results.push({
+    'relatedIsbn': 9780765326386,
     'isbn': isbn[random],
     'title': titles[random],
     'author': authors[random],

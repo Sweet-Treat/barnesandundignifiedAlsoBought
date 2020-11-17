@@ -18,8 +18,8 @@ class App extends React.Component {
   }
 
   getData(isbn) {
-    // axios.get(`http://localhost:3004/getBooks/9791429673053`)
-    axios.get(`http://localhost:3004/getBooks/`)
+    axios.get(`http://localhost:3004/getBooks/9780765326386`)
+    // axios.get(`http://localhost:3004/getBooks/`)
     .then((res) => {
       // console.log("DATA:", res.data)
       this.setState({
