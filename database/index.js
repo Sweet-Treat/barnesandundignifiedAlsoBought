@@ -7,6 +7,7 @@ mongoose.connect(
 );
 
 let bookSchema = mongoose.Schema({
+  relatedIsbn: Number,
   isbn: Number,
   title: String,
   author: String,
@@ -15,8 +16,10 @@ let bookSchema = mongoose.Schema({
 
 let Book = mongoose.model('Book', bookSchema);
 
-let getData = (callback) => {
-  Book.find({}, (err, data) => {
+let getData = (isbn, callback) => {
+  Book.find({relatedIsbn: isbn.params.relatedIsbn}, (err, data) => {
+// let getData = (callback) => {
+//   Book.find((err, data) => {
     if (err) {
       callback(err, null);
     } else {

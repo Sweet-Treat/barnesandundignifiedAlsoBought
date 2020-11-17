@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: whitesmoke;
+  display: grid;
+  /* place-items: center; */
+}
+
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 6px;
+  position: center;
+  margin-top: 80px;
+  /* margin-top: 140px */
+}
+
+.arrow:hover {
+  border: solid darkslategray;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 6px;
+  position: center;
+  margin-top: 500%;
+  cursor:pointer;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  margin-right: 15px;
+}
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  margin-left: 15px;
+}
+
+.carousel {
+  display:grid;
+  grid-auto-flow:column;
+  grid-gap:10px;
+  margin:30px;
+  overflow:auto;
+  border: 1px solid gray;
+}
+
+.carousel ul {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+}
+/* .carousel > *{
+  padding:30px; color:#fff; font-size:20px; background:#cc0000;
+} */
+
+.header {
+  display: grid;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  grid-template-columns: minmax(20px, 1fr) auto minmax(20px, 1fr);
+  grid-gap: 20px;
+  font-family: 'Merriweather', serif;
+
+}
+
+/* .header {
+  > * {
+  grid-column: 2 / -2;
+}
+
+.header {
+  > .full {
+  grid-column: 1 / -1;
+}
+
+.item {
+  display: grid;
+  grid-gap: calc(var(--gutter) / 2);
+  grid-template-columns: repeat(6, calc(50% - var(--gutter) * 2));
+  grid-template-rows: minmax(150px, 1fr);
+
+  overflow-x: scroll;
+  scroll-snap-type: x proximity;
+  padding-bottom: calc(.75 * var(--gutter));
+  margin-bottom: calc(-.25 * var(--gutter));
+} */
+
+.header:before,
+.header:after {
+  content: '';
+  border-top: 2px solid;
+}
+
+/*
+image carousel
+  - horizontal scroll
+  - text stacked vertically
+  - display 7 by default
+  - scroll displays remaining 3
+  - arrows on left and right (onClick event)
+
+  convert rating to stars
+  -
+
+  display dummy image
+  - heart icon
+  - preview icon
+
+DONE - add lines next to header
+*/
+
+/* // people reviews product search  */

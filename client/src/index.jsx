@@ -13,15 +13,20 @@ class App extends React.Component {
       isLoading: true
     }
     this.getData = this.getData.bind(this);
+    this.leftClick = this.leftClick.bind(this);
+    this.rightClick = this.rightClick.bind(this);
   }
 
-  getData(data) {
-    axios.get('http://localhost:3004/getBooks')
+  getData(isbn) {
+    axios.get(`http://localhost:3004/getBooks/9780765326386`)
+    // axios.get(`http://localhost:3004/getBooks/`)
     .then((res) => {
       // console.log("DATA:", res.data)
       this.setState({
         data: res.data,
-        isLoading: false
+        isLoading: false,
+        leftArrow: true,
+        rightArrow: false
       })
     })
     .catch((err) => {console.log('Axios GET Error', err)})
@@ -31,13 +36,40 @@ class App extends React.Component {
     this.getData()
   }
 
+  leftClick() {
+    // console.log('left!');
+    this.setState({
+      leftArrow: true,
+      rightArrow: false
+    })
+  }
+
+  rightClick() {
+    // console.log('right!');
+    this.setState({
+      leftArrow: false,
+      rightArrow: true
+    })
+  }
+
   render() {
     if (this.state.isLoading) {
       return (<h1 style={{textAlign: "center"}}>Loading...</h1>)
     }
 
     return (
-      <Carousel books={this.state}/>
+      <div>
+        <h2 class="header">
+          Customers Who Bought This Item Also Bought
+          </h2>
+        <Carousel
+          books={this.state}
+          leftClick={this.leftClick}
+          rightClick={this.rightClick}
+
+        />
+        {console.log(this.state)}
+      </div>
     )
   }
 
