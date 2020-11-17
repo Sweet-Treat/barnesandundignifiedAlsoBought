@@ -17,13 +17,16 @@ class App extends React.Component {
     this.rightClick = this.rightClick.bind(this);
   }
 
-  getData(data) {
-    axios.get('http://localhost:3004/getBooks')
+  getData(isbn) {
+    // axios.get(`http://localhost:3004/getBooks/9791429673053`)
+    axios.get(`http://localhost:3004/getBooks/`)
     .then((res) => {
       // console.log("DATA:", res.data)
       this.setState({
         data: res.data,
-        isLoading: false
+        isLoading: false,
+        leftArrow: true,
+        rightArrow: false
       })
     })
     .catch((err) => {console.log('Axios GET Error', err)})
@@ -34,11 +37,19 @@ class App extends React.Component {
   }
 
   leftClick() {
-    console.log('left!');
+    // console.log('left!');
+    this.setState({
+      leftArrow: true,
+      rightArrow: false
+    })
   }
 
   rightClick() {
-    console.log('right!');
+    // console.log('right!');
+    this.setState({
+      leftArrow: false,
+      rightArrow: true
+    })
   }
 
   render() {
@@ -57,6 +68,7 @@ class App extends React.Component {
           rightClick={this.rightClick}
 
         />
+        {console.log(this.state)}
       </div>
     )
   }
