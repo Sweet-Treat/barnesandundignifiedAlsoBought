@@ -7,8 +7,8 @@ mongoose.connect(
 );
 
 let bookSchema = mongoose.Schema({
-  relatedIsbn: Number,
-  isbn: Number,
+  relatedIsbn: String,
+  isbn: String,
   title: String,
   author: String,
   rating: Number
@@ -18,8 +18,6 @@ let Book = mongoose.model('Book', bookSchema);
 
 let getData = (isbn, callback) => {
   Book.find({relatedIsbn: isbn.params.relatedIsbn}, (err, data) => {
-// let getData = (callback) => {
-//   Book.find((err, data) => {
     if (err) {
       callback(err, null);
     } else {

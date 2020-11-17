@@ -24,10 +24,10 @@ let Carousel = (props) => {
   // EVENTUALLY - get arrow to gray out and No-Action if all the way to the right or left
 
   let map = data.map((elem) => {
-    // Title should only be 30 characters long, then "..."
+    // Title should only be 35 characters long, then "..."
     let title = '';
-    if (elem.title.length > 38) {
-      title = elem.title.substring(0, 38) + '...';
+    if (elem.title.length > 35) {
+      title = elem.title.substring(0, 35) + '...';
     } else {
       title = elem.title;
     }
