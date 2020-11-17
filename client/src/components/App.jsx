@@ -7,7 +7,9 @@ class App extends React.Component {
     super(props);
     this.state = {
       data: [],
-      isLoading: true
+      isLoading: true,
+      leftArrow: true,
+      rightArrow: false
     }
     this.getData = this.getData.bind(this);
     this.leftClick = this.leftClick.bind(this);
@@ -33,19 +35,23 @@ class App extends React.Component {
   }
 
   leftClick() {
-    // console.log('left!');
-    this.setState({
-      leftArrow: true,
-      rightArrow: false
-    })
+    if (this.state.leftArrow === false) {
+      this.setState({
+        leftArrow: true,
+        rightArrow: false
+      })
+      console.log('left arrow clicked');
+    }
   }
 
   rightClick() {
-    // console.log('right!');
-    this.setState({
-      leftArrow: false,
-      rightArrow: true
-    })
+    if (this.state.rightArrow === false) {
+      this.setState({
+        leftArrow: false,
+        rightArrow: true
+      })
+      console.log('right arrow clicked');
+    }
   }
 
   render() {
@@ -64,6 +70,7 @@ class App extends React.Component {
           rightClick={this.rightClick}
 
         />
+        {console.log(this.state)}
       </div>
     )
   }

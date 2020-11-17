@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 let Carousel = (props) => {
 
   // TODO: map over res.data and setState //
@@ -47,9 +46,9 @@ let Carousel = (props) => {
   return (
     <div>
       <div style={{display: 'flex'}}>
-        <button><i class="arrow left" onClick={props.leftClick}></i></button>
+        <p><i class="arrow left" onClick={props.leftClick}></i></p>
         {map}
-        <button><i class="arrow right" onClick={props.rightClick}></i></button>
+        <p><i class="arrow right" onClick={props.rightClick}></i></p>
       </div>
     </div>
 
