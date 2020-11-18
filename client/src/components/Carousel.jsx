@@ -3,22 +3,22 @@ import React from 'react';
 let Carousel = (props) => {
 
   // TODO: map over res.data and setState //
-  let data = props.books.data
-  let randomImage = "https://source.unsplash.com/random/150x175";
+  let data = props.books.data;
+  let randomImage = 'https://source.unsplash.com/random/150x175';
   let leftArrowState = true;
   let rightArrowState = false;
 
   // scroll logic
   // display only 7 images
-    // left arrow set to "True" by default
+  // left arrow set to "True" by default
   // if right arrow clicked, remove first 3, show last 3
-    // mark right arrow as "True" and left as "False"
+  // mark right arrow as "True" and left as "False"
   // if left arrow clicked, rmeove last 3, show first 3
-    // mark left arrow as "True" and right as "False"
+  // mark left arrow as "True" and right as "False"
 
   // default = slice(0, 7).
-    // onClick left = no action
-    // onclick right = re-render w/ slice (3,  10) && set right to false, left to true
+  // onClick left = no action
+  // onclick right = re-render w/ slice (3,  10) && set right to false, left to true
 
   // EVENTUALLY - get arrow to gray out and No-Action if all the way to the right or left
 
@@ -31,17 +31,17 @@ let Carousel = (props) => {
       title = elem.title;
     }
 
-    return(
+    return (
       <div class="carousel">
         <ul class="book">
-    <img src='https://source.unsplash.com/random/150x175'></img><br/>
+          <img src='https://source.unsplash.com/random/150x175'></img><br/>
           {title}<br/>
           by {elem.author}<br/>
           {elem.rating}
         </ul>
       </div>
-    )
-  })
+    );
+  });
 
   return (
     <div>
@@ -52,15 +52,15 @@ let Carousel = (props) => {
       </div>
     </div>
 
-  )
-}
+  );
+};
 
 export default Carousel;
 
-        {/* <div className="image">image placeholder</div>
+{ /* <div className="image">image placeholder</div>
         <div className="title">{elem.title}</div>
         <div className="author">{elem.author}></div>
-        <div className="rating">{elem.rating}</div> */}
+        <div className="rating">{elem.rating}</div> */ }
 
 
 // ask other service for title and endpoint
