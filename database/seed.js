@@ -72,6 +72,8 @@ let ratings = ratingGenerator();
 
 //////////////////////////////////////
 
+let category = ['Nonfiction', 'Fiction', 'History', 'Fantasy', 'Romance', 'Home and garden', 'Graphic novel', 'Humor', 'Autobiography', 'Business/economics', 'Cookbook', 'Diary']
+
 let seedData = () => {
   let results = [];
   for (var i = 0; i < 100; i++) {
@@ -82,7 +84,8 @@ let seedData = () => {
     'isbn': isbn[random],
     'title': titles[random],
     'author': authors[random],
-    'rating': ratings[random]
+    'rating': ratings[random],
+    'category': category[3]
     })
   }
   return results;

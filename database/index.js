@@ -11,7 +11,8 @@ let bookSchema = mongoose.Schema({
   isbn: String,
   title: String,
   author: String,
-  rating: Number
+  rating: Number,
+  category: String
 })
 
 let Book = mongoose.model('Book', bookSchema);
