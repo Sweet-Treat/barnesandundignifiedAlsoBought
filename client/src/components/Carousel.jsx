@@ -1,12 +1,13 @@
 import React from 'react';
 
 let Carousel = (props) => {
-
+console.log("HERE!", props.books.data[0].relatedBooks)
   // TODO: map over res.data and setState //
-  let data = props.books.data;
+  let data = props.books.data[0].relatedBooks;
+  let limitSize = data.splice(0, 10)
+
   let randomImage = 'https://source.unsplash.com/random/150x175';
-  let leftArrowState = true;
-  let rightArrowState = false;
+
 
   // scroll logic
   // display only 7 images
@@ -22,7 +23,7 @@ let Carousel = (props) => {
 
   // EVENTUALLY - get arrow to gray out and No-Action if all the way to the right or left
 
-  let map = data.map((elem) => {
+  let map = limitSize.map((elem) => {
     // Title should only be 35 characters long, then "..."
     let title = '';
     if (elem.title.length > 35) {
@@ -34,7 +35,7 @@ let Carousel = (props) => {
     return (
       <div class="carousel">
         <ul class="book">
-          <img src='https://source.unsplash.com/random/150x175'></img><br/>
+          <img src={randomImage}></img><br/>
           {title}<br/>
           by {elem.author}<br/>
           {elem.rating}

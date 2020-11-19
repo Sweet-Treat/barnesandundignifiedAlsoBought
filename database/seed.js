@@ -75,26 +75,24 @@ let ratings = ratingGenerator();
 let category = ['Nonfiction', 'Fiction', 'History', 'Fantasy', 'Romance', 'Home and garden', 'Graphic novel', 'Humor', 'Autobiography', 'Business/economics', 'Cookbook', 'Diary'];
 
 let seedData = () => {
-  let results = [];
+  let results = [{
+    rootIsbn: '9780765326386',
+    relatedBooks: []
+  }];
+
   for (var i = 0; i < 100; i++) {
     var random = Math.floor(Math.random() * 100);
 
-    results.push({
-      'rootIsbn': '9780765326386',
-      'isbn': isbn[random],
-      'title': titles[random],
-      'author': authors[random],
-      'rating': ratings[random],
-      'category': category[3]
-    });
+    results[0].relatedBooks.push({
+      isbn: isbn[random],
+      title: titles[random],
+      author: authors[random],
+      category: category[3],
+      rating: ratings[random]
+    })
   }
   return results;
 };
-
-
-
-
-
 
 const sampleBooks = seedData();
 
@@ -104,3 +102,13 @@ const insertSampleBooks = function() {
 };
 
 insertSampleBooks();
+
+// First DB mapping for reference. Changed DB schema.
+    // results.push({
+    //   'rootIsbn': '9780765326386',
+    //   'isbn': isbn[random],
+    //   'title': titles[random],
+    //   'author': authors[random],
+    //   'rating': ratings[random],
+    //   'category': category[3]
+    // });
