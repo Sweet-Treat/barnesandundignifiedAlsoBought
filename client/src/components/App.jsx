@@ -19,6 +19,7 @@ class App extends React.Component {
   getData(isbn) {
     axios.get('http://localhost:3004/products/9780765326386/alsoBought')
       .then((res) => {
+        console.log('data:', res.data)
         this.setState({
           data: res.data,
           isLoading: false,

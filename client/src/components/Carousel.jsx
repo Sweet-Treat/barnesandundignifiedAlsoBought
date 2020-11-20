@@ -1,11 +1,8 @@
 import React from 'react';
 
 let Carousel = (props) => {
-console.log("HERE!", props.books.data[0].relatedBooks)
-  // TODO: map over res.data and setState //
   let data = props.books.data[0].relatedBooks;
   let limitSize = data.splice(0, 10)
-
   let randomImage = 'https://source.unsplash.com/random/150x175';
 
 
@@ -58,10 +55,6 @@ console.log("HERE!", props.books.data[0].relatedBooks)
 
 export default Carousel;
 
-{ /* <div className="image">image placeholder</div>
-        <div className="title">{elem.title}</div>
-        <div className="author">{elem.author}></div>
-        <div className="rating">{elem.rating}</div> */ }
 
 
 // ask other service for title and endpoint
@@ -71,3 +64,8 @@ export default Carousel;
 
 
 // What do I need to get from other services?
+
+// Fulfillment service/purchase history
+// What are other orders if someone bought this book?
+// Which should we show? (genre)
+// Most frequently purchased book in genre

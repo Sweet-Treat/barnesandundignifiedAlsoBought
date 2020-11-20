@@ -6,19 +6,25 @@ mongoose.connect(
   () => { console.log('Connected to database!'); }
 );
 
-// This is relational data I own
-let bookSchema = mongoose.Schema({
-  rootIsbn: String,
-  relatedBooks: [{
-    isbn: String,
-    title: String,
-    author: String,
-    category: String,
-    rating: Number
-  }]
-})
+const RelatedBooks = mongoose.Schema({
+  isbn: String,
+  title: String,
+  author: String,
+  genre: String,
+});
+// "ratings" intentionally left off Schema.
+// This will be directly pulled from Reviews service.
 
-let Book = mongoose.model('Book', bookSchema);
+// build V1 w/o ratings, and simply build to GET ratings from Nathan's data.
+// RATINGS DEFAULT in case Nathan's service is down
+// Pull down Nathan's service, run locally, try to get Ratings from his service
+
+const BookSchema = mongoose.Schema({
+  rootIsbn: String,
+  relatedBooks: [RelatedBooks]
+});
+
+let Book = mongoose.model('Book', BookSchema);
 
 let getData = (isbn, callback) => {
   // console.log(isbn.params.rootIsbn)
@@ -72,3 +78,19 @@ Next steps:
 //   rating: Number,
 //   category: String
 // });
+
+
+////
+// This is relational data I own
+// let bookSchema = mongoose.Schema({
+//   rootIsbn: String,
+//   relatedBooks: [{
+//     isbn: String,
+//     title: String,
+//     author: String,
+//     genre: String,
+//     rating: Number
+//   }]
+// })
+
+

@@ -75,20 +75,19 @@ let ratings = ratingGenerator();
 let category = ['Nonfiction', 'Fiction', 'History', 'Fantasy', 'Romance', 'Home and garden', 'Graphic novel', 'Humor', 'Autobiography', 'Business/economics', 'Cookbook', 'Diary'];
 
 let seedData = () => {
-  let results = [{
+  let results = {
     rootIsbn: '9780765326386',
     relatedBooks: []
-  }];
+  };
 
   for (var i = 0; i < 100; i++) {
     var random = Math.floor(Math.random() * 100);
 
-    results[0].relatedBooks.push({
+    results.relatedBooks.push({
       isbn: isbn[random],
       title: titles[random],
       author: authors[random],
-      category: category[3],
-      rating: ratings[random]
+      genre: category[3]
     })
   }
   return results;
@@ -112,3 +111,36 @@ insertSampleBooks();
     //   'rating': ratings[random],
     //   'category': category[3]
     // });
+
+
+// ACTUAL BOOK DATA
+// ISBN-13:	9781524763169
+// A Promised Land
+// by Barack Obama
+// ISBN-13:	9781571311931
+// World of Wonders: In Praise of Fireflies, Whale Sharks, and Other Astonishments (B&N Exclusive Gift Edition)
+// by Aimee Nezhukumatathil
+// ISBN-13:	9780765326386
+// Rhythm of War (Stormlight Archive Series #4)
+// by Brandon Sanderson
+// ISBN-13:	9780316187183
+// The Trouble with Peace
+// by Joe Abercrombie
+// ISBN-13:	9780670020553
+// The Magicians (Magicians Series #1)
+// by Lev Grossman
+// ISBN-13:	9780765386489
+// Soleri: A Novel
+// by Michael Johnston
+// ISBN-13:	9781250088482
+// The Empire’s Ghost: A Novel
+// by Isabelle Steiger
+// ISBN-13:	9780812996708
+// Miss Benson’s Beetle
+// by Rachel Joyce
+// ISBN-13:	9780062667632
+// Leave the World Behind
+// by Rumaan Alam
+// ISBN-13:	9781594633294
+// The Fair Fight
+// by Anna Freeman
