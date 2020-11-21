@@ -1,31 +1,47 @@
 import React from 'react';
 import axios from 'axios';
 import Carousel from './Carousel.jsx';
+import GetReviews from './GetReviews.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
-      isLoading: true,
+      productData: [],
+      reviewsData: [],
       leftArrow: true,
-      rightArrow: false
+      rightArrow: false,
+      isLoading: true,
     };
-    this.getData = this.getData.bind(this);
+    this.getData = this.getRatingsData.bind(this);
     this.leftClick = this.leftClick.bind(this);
     this.rightClick = this.rightClick.bind(this);
   }
 
   getData(isbn) {
-    axios.get('http://localhost:3004/products/9780765326386/alsoBought')
-      .then((res) => {
-        console.log('data:', res.data)
-        this.setState({
-          data: res.data,
-          isLoading: false,
-        });
+    Promise.all([
+      axios.get(`http://localhost:8000/reviewssummary/9781524763169`),
+      axios.get(`http://localhost:8000/reviewssummary/9781571311931`),
+      axios.get(`http://localhost:8000/reviewssummary/9781250793676`),
+      axios.get(`http://localhost:8000/reviewssummary/9780316187183`),
+      axios.get(`http://localhost:8000/reviewssummary/9780670020553`),
+      axios.get(`http://localhost:8000/reviewssummary/9780765386489`),
+      axios.get(`http://localhost:8000/reviewssummary/9781250088482`),
+      axios.get(`http://localhost:8000/reviewssummary/9781524796372`),
+      axios.get(`http://localhost:8000/reviewssummary/9780062667632`),
+      axios.get(`http://localhost:8000/reviewssummary/9781982157999`),
+      axios.get('http://localhost:3004/products/9780765326386/alsoBought'),
+    ])
+    .then( ([res1, res2, res3, res4, res5, res6, res7, res8, res9, res10, res11]) => {
+      this.setState({
+        productData: res11.data,
+        reviewsData: [res1.data, res2.data, res3.data, res4.data, res5.data, res6.data, res7.data, res8.data, res9.data, res10.data],
+        isLoading: false
       })
-      .catch((err) => { console.log('Axios GET Error', err); });
+    })
+    .catch(err => {
+      console.log('PROMISE ALL Error:', err);
+    })
   }
 
   componentDidMount() {
@@ -34,10 +50,6 @@ class App extends React.Component {
 
   leftClick() {
     if (this.state.leftArrow === false) {
-      { inputStyle = {
-        border: 'solid blue'
-      }; }
-
       this.setState({
         leftArrow: true,
         rightArrow: false

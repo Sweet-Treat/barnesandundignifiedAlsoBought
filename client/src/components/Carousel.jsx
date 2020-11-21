@@ -1,9 +1,39 @@
 import React from 'react';
 
 let Carousel = (props) => {
-  let data = props.books.data[0].relatedBooks;
-  let limitSize = data.splice(0, 10)
+  // Product Data
+  let productData = props.books.productData[0].relatedBooks;
+  let limitRelatedBooks = '';
+
+  if (props.books.leftArrow === true) {
+    limitRelatedBooks = productData.slice(0,7);
+  } else {
+    limitRelatedBooks = productData.slice(3, 10)
+  }
+
   let randomImage = 'https://source.unsplash.com/random/150x175';
+
+  // Reviews Data
+  let reviewsData = props.books.reviewsData.map(review => {return review.avgRating})
+// console.log('review data:', reviewsData)
+  // console.log('reviews:', reviewsData.avgRating);
+  // console.log('books:', limitRelatedBooks);
+
+  console.log(props);
+
+  // Both my DB and Nathan's will have 10 identical books in DB
+  // Shared ISBN = 9780765326386
+  // Related books = identical books
+  // Algo logic (Basic) = if category === category of 9780765326386, then add to new array.
+    // Map through new array and render that new map
+
+    // let test = reviewsData.map((review) => {
+    //   productData.forEach((prod, index) => {
+    //     prod['review'] = review
+    //   })
+    // })
+    // console.log('PROD DATA:', productData);
+
 
 
   // scroll logic
@@ -20,7 +50,7 @@ let Carousel = (props) => {
 
   // EVENTUALLY - get arrow to gray out and No-Action if all the way to the right or left
 
-  let map = limitSize.map((elem) => {
+  let mapProductData = limitRelatedBooks.map((elem) => {
     // Title should only be 35 characters long, then "..."
     let title = '';
     if (elem.title.length > 35) {
@@ -31,21 +61,22 @@ let Carousel = (props) => {
 
     return (
       <div class="carousel">
-        <ul class="book">
-          <img src={randomImage}></img><br/>
-          {title}<br/>
-          by {elem.author}<br/>
-          {elem.rating}
-        </ul>
-      </div>
+      <ul class="book">
+        <img src={randomImage}></img><br/>
+        {title}<br/>
+        by {elem.author}<br/>
+      </ul>
+    </div>
     );
   });
+
+  // let mapReviewData =
 
   return (
     <div>
       <div style={{display: 'flex'}}>
         <p><i class="arrow left" onClick={props.leftClick}></i></p>
-        {map}
+        {mapProductData}
         <p><i class="arrow right" onClick={props.rightClick}></i></p>
       </div>
     </div>

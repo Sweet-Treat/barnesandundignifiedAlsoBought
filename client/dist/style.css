@@ -13,7 +13,7 @@ body {
   display: inline-block;
   padding: 6px;
   position: center;
-  margin-top: 150px;
+  margin-top: 100px;
   /* margin-top: 140px */
 }
 
@@ -23,7 +23,7 @@ body {
   display: inline-block;
   padding: 6px;
   position: center;
-  margin-top: 150px;
+  margin-top: 100px;
   cursor:pointer;
 }
 
@@ -41,10 +41,11 @@ body {
 .carousel {
   display:grid;
   grid-auto-flow:column;
-  grid-gap:10px;
-  margin:30px;
+  grid-gap:5px;
+  margin:5px;
   overflow:auto;
-  border: 1px solid gray;
+  width: 200px;
+  height: 250px;
 }
 
 .carousel ul {

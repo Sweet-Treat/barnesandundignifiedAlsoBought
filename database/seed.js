@@ -77,7 +77,68 @@ let category = ['Nonfiction', 'Fiction', 'History', 'Fantasy', 'Romance', 'Home 
 let seedData = () => {
   let results = {
     rootIsbn: '9780765326386',
-    relatedBooks: []
+    relatedBooks: [
+      {
+        isbn: 9781524763169,
+        title: 'A Promised Land',
+        author: 'Barack Obama',
+        genre: 'Fantasy'
+      },
+      {
+        isbn: 9781571311931,
+        title: 'World of Wonders: In Praise of Fireflies, Whale Sharks, and Other Astonishments (B&N Exclusive Gift Edition)',
+        author: 'Aimee Nezhukumatathil',
+        genre: 'Fantasy'
+      },
+      {
+        isbn: 9781250793676,
+        title: 'Rhythm of War (Signed Book) (Stormlight Archive Series #4)',
+        author: 'Brandon Sanderson',
+        genre: 'Fantasy'
+      },
+      {
+        isbn: 9780316187183,
+        title: 'The Trouble with Peace',
+        author: 'Joe Abercrombie',
+        genre: 'Fantasy'
+      },
+      {
+        isbn: 9780670020553,
+        title: 'The Magicians (Magicians Series #1)',
+        author: 'Lev Grossman',
+        genre: 'Fantasy'
+      },
+      {
+        isbn: 9780765386489,
+        title: 'Soleri: A Novel',
+        author: 'Michael Johnston',
+        genre: 'Fantasy'
+      },
+      {
+        isbn: 9781250088482,
+        title: 'The Empire\'s Ghost: A Novel',
+        author: 'Isabelle Steiger',
+        genre: 'Fantasy'
+      },
+      {
+        isbn: 9781524796372,
+        title: 'Lost Roses',
+        author: 'Martha Hall Kelly',
+        genre: 'Fantasy'
+      },
+      {
+        isbn: 9780062667632,
+        title: 'Leave the World Behind Alam',
+        author: 'Rumaan Alam',
+        genre: 'Fantasy'
+      },
+      {
+        isbn: 9781982157999,
+        title: 'The Answer Is...: Reflections on My Life',
+        author: 'Alex Trebek',
+        genre: 'Fantasy'
+      },
+    ]
   };
 
   for (var i = 0; i < 100; i++) {
