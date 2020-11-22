@@ -15,7 +15,7 @@ app.get('/products/:rootIsbn/alsoBought', (req, res) => {
     if (err) {
       res.status(500).send(err);
     } else {
-      // console.log('express data:', data)
+      console.log('express data:', data)
       res.status(200).send(data);
     }
   });

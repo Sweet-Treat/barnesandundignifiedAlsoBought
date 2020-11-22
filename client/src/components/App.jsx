@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import Carousel from './Carousel.jsx';
-import GetReviews from './GetReviews.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,9 +12,11 @@ class App extends React.Component {
       rightArrow: false,
       isLoading: true,
     };
-    this.getData = this.getRatingsData.bind(this);
+    this.getData = this.getData.bind(this);
     this.leftClick = this.leftClick.bind(this);
     this.rightClick = this.rightClick.bind(this);
+    this.titleClick = this.titleClick.bind(this);
+    this.authorClick = this.authorClick.bind(this);
   }
 
   getData(isbn) {
@@ -68,20 +69,30 @@ class App extends React.Component {
     }
   }
 
+  titleClick(title) {
+    alert (`Redirecting to ${title}`)
+  }
+
+  authorClick(author) {
+    alert (`Redirecting to other books written by ${author}`)
+  }
+
   render() {
     if (this.state.isLoading) {
       return (<h1 style={{textAlign: 'center'}}>Loading...</h1>);
     }
 
+    console.log(this.state);
+
     return (
       <div>
-        <h2 class="header">
-          Customers Who Bought This Item Also Bought
-        </h2>
+        <h1 className="header">Customers Who Bought This Item Also Bought</h1>
         <Carousel
           books={this.state}
           leftClick={this.leftClick}
           rightClick={this.rightClick}
+          titleClick={this.authorClick}
+          authorClick={this.authorClick}
         />
       </div>
     );

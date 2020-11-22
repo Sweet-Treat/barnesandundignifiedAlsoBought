@@ -1,25 +1,39 @@
 import React from 'react';
+import StarRatings from 'react-star-ratings';
+
 
 let Carousel = (props) => {
-  // Product Data
   let productData = props.books.productData[0].relatedBooks;
+  let reviewsData = props.books.reviewsData;
   let limitRelatedBooks = '';
+  let limitReviews = '';
+
+  let randomImages = ['https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175'];
 
   if (props.books.leftArrow === true) {
     limitRelatedBooks = productData.slice(0,7);
+    limitReviews = reviewsData.slice(0, 7);
   } else {
-    limitRelatedBooks = productData.slice(3, 10)
+    limitRelatedBooks = productData.slice(3, 10);
+    limitReviews = reviewsData.slice(3, 10);
   }
 
-  let randomImage = 'https://source.unsplash.com/random/150x175';
+  limitRelatedBooks.forEach((prod, index) => {
+    limitReviews.forEach(review => {
+      prod['imgUrl'] = randomImages[index]
+      return prod['avgRating'] = review.avgRating;
+    })
+  })
 
-  // Reviews Data
-  let reviewsData = props.books.reviewsData.map(review => {return review.avgRating})
-// console.log('review data:', reviewsData)
-  // console.log('reviews:', reviewsData.avgRating);
-  // console.log('books:', limitRelatedBooks);
+  // console.log(limitRelatedBooks);
 
-  console.log(props);
+// TODO
+// - ratings only displays a single Number. Fix.
+// - image only displays a single image. Fix.
+// - carousel doesn't "scroll" seamlessly
+// - improve logic of choosing data from my DB and Nathan's
+// FUTURE CSS - get arrow to gray out and No-Action if all the way to the right or left
+
 
   // Both my DB and Nathan's will have 10 identical books in DB
   // Shared ISBN = 9780765326386
@@ -27,31 +41,18 @@ let Carousel = (props) => {
   // Algo logic (Basic) = if category === category of 9780765326386, then add to new array.
     // Map through new array and render that new map
 
-    // let test = reviewsData.map((review) => {
-    //   productData.forEach((prod, index) => {
-    //     prod['review'] = review
-    //   })
-    // })
-    // console.log('PROD DATA:', productData);
 
 
+// HD QUESTIONS
+// - Why doesn't Unsplash random image produce a new image w/ each iteration? (look up image API)
+// - How can I map both Product & Review data together?
 
-  // scroll logic
-  // display only 7 images
-  // left arrow set to "True" by default
-  // if right arrow clicked, remove first 3, show last 3
-  // mark right arrow as "True" and left as "False"
-  // if left arrow clicked, rmeove last 3, show first 3
-  // mark left arrow as "True" and right as "False"
 
-  // default = slice(0, 7).
-  // onClick left = no action
-  // onclick right = re-render w/ slice (3,  10) && set right to false, left to true
+  let mapProductData = limitRelatedBooks.map((elem, index) => {
 
-  // EVENTUALLY - get arrow to gray out and No-Action if all the way to the right or left
+    console.log(elem.imgUrl)
 
-  let mapProductData = limitRelatedBooks.map((elem) => {
-    // Title should only be 35 characters long, then "..."
+    // Title's longer than 35 characters long are truncated with "..."
     let title = '';
     if (elem.title.length > 35) {
       title = elem.title.substring(0, 35) + '...';
@@ -60,24 +61,31 @@ let Carousel = (props) => {
     }
 
     return (
-      <div class="carousel">
-      <ul class="book">
-        <img src={randomImage}></img><br/>
-        {title}<br/>
-        by {elem.author}<br/>
+      <div className="carousel">
+      <ul className="book">
+        <img className="image" onClick={() => {props.titleClick(title)}} src='https://source.unsplash.com/random/150x175'></img><br/>
+        <div className="title" onClick={() => {props.titleClick(title)}}>{title}</div>
+        <div onClick={() => {props.authorClick(elem.author)}}>by {elem.author}</div>
+        <div>
+          <StarRatings
+            rating={elem.avgRating}
+            starDimension="20px"
+            starSpacing=".5px"
+            starRatedColor="orange"
+            starEmptyColor="lightGrey"
+          />
+        </div>
       </ul>
     </div>
     );
   });
 
-  // let mapReviewData =
-
   return (
     <div>
       <div style={{display: 'flex'}}>
-        <p><i class="arrow left" onClick={props.leftClick}></i></p>
+        <p><i className="arrow left" onClick={props.leftClick}></i></p>
         {mapProductData}
-        <p><i class="arrow right" onClick={props.rightClick}></i></p>
+        <p><i className="arrow right" onClick={props.rightClick}></i></p>
       </div>
     </div>
 
