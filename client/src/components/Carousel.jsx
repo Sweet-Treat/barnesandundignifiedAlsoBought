@@ -13,7 +13,8 @@ let Carousel = (props) => {
   let randomImages = ['https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175'];
 
 
-// Algo to confirm the same Book Genre, then limit to 7 viewable books
+// Algo to confirm the same Book Genre, then limit to 7 viewable books depending on which arrow is clicked
+  // Left arrow clicked
   if (props.books.leftArrow === true) {
     for (var k = 0; k < productData.length; k++) {
       if (originalGenre === productData[k].genre) {
@@ -26,13 +27,14 @@ let Carousel = (props) => {
         limitReviews = reviewsData.slice(0, 7);
       }
     }
+  // Right arrow clicked
   } else {
     for (var l = 0; l < productData.length; l++) {
       if (originalGenre === productData[l].genre) {
         limitRelatedBooks.push(productData[l])
       }
     }
-    limitRelatedBooks.slice(3,10);
+    limitRelatedBooks = limitRelatedBooks.slice(3,10);
     for (var j = 0; j < reviewsData.length; j++) {
       if (reviewsData[j] !== reviewsData[j+1]) {
         limitReviews = reviewsData.slice(3, 10);
