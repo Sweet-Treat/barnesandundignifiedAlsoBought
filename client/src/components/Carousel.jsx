@@ -3,32 +3,57 @@ import StarRatings from 'react-star-ratings';
 
 
 let Carousel = (props) => {
+  let originalGenre = props.books.productData[0].genre;
   let productData = props.books.productData[0].relatedBooks;
   let reviewsData = props.books.reviewsData;
-  let limitRelatedBooks = '';
-  let limitReviews = '';
+  let limitRelatedBooks = [];
+  let limitReviews = [];
+  let combinedDB = [];
 
   let randomImages = ['https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175'];
 
+
+// Algo to confirm the same Book Genre, then limit to 7 viewable books
   if (props.books.leftArrow === true) {
-    limitRelatedBooks = productData.slice(0,7);
-    limitReviews = reviewsData.slice(0, 7);
+    for (var k = 0; k < productData.length; k++) {
+      if (originalGenre === productData[k].genre) {
+        limitRelatedBooks.push(productData[k])
+      }
+    }
+    limitRelatedBooks = limitRelatedBooks.slice(0,7);
+    for (var i = 0; i < reviewsData.length; i++) {
+      if (reviewsData[i] !== reviewsData[i+1]) {
+        limitReviews = reviewsData.slice(0, 7);
+      }
+    }
   } else {
-    limitRelatedBooks = productData.slice(3, 10);
-    limitReviews = reviewsData.slice(3, 10);
+    for (var l = 0; l < productData.length; l++) {
+      if (originalGenre === productData[l].genre) {
+        limitRelatedBooks.push(productData[l])
+      }
+    }
+    limitRelatedBooks.slice(3,10);
+    for (var j = 0; j < reviewsData.length; j++) {
+      if (reviewsData[j] !== reviewsData[j+1]) {
+        limitReviews = reviewsData.slice(3, 10);
+      }
+    }
   }
 
-  limitRelatedBooks.forEach((prod, index) => {
-    limitReviews.forEach(review => {
-      prod['imgUrl'] = randomImages[index]
-      return prod['avgRating'] = review.avgRating;
-    })
-  })
-
-  // console.log(limitRelatedBooks);
+// Combine data from both DB after filtered above
+for (var i = 0; i < limitRelatedBooks.length; i++) {
+  combinedDB[i] = {
+    author: limitRelatedBooks[i].author,
+    genre: limitRelatedBooks[i].genre,
+    isbn: limitRelatedBooks[i].isbn,
+    title: limitRelatedBooks[i].title,
+    _id: limitRelatedBooks[i]._id,
+    totalReviews: limitReviews[i].totalReviews,
+    avgRating: limitReviews[i].avgRating
+  }
+}
 
 // TODO
-// - ratings only displays a single Number. Fix.
 // - image only displays a single image. Fix.
 // - carousel doesn't "scroll" seamlessly
 // - improve logic of choosing data from my DB and Nathan's
@@ -48,9 +73,9 @@ let Carousel = (props) => {
 // - How can I map both Product & Review data together?
 
 
-  let mapProductData = limitRelatedBooks.map((elem, index) => {
+  let mapProductData = combinedDB.map((elem, index) => {
 
-    console.log(elem.imgUrl)
+    // console.log(elem.imgUrl)
 
     // Title's longer than 35 characters long are truncated with "..."
     let title = '';

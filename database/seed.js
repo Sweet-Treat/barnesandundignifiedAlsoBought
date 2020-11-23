@@ -77,12 +77,13 @@ let category = ['Nonfiction', 'Fiction', 'History', 'Fantasy', 'Romance', 'Home 
 let seedData = () => {
   let results = {
     rootIsbn: '9780765326386',
+    genre: 'Fantasy',
     relatedBooks: [
       {
         isbn: 9781524763169,
         title: 'A Promised Land',
         author: 'Barack Obama',
-        genre: 'Fantasy'
+        genre: 'Autobiography'
       },
       {
         isbn: 9781571311931,

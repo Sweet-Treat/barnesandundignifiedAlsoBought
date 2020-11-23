@@ -21,6 +21,7 @@ const RelatedBooks = mongoose.Schema({
 
 const BookSchema = mongoose.Schema({
   rootIsbn: String,
+  genre: String,
   relatedBooks: [RelatedBooks]
 });
 

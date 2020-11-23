@@ -20,6 +20,9 @@ class App extends React.Component {
   }
 
   getData(isbn) {
+    // axios.get('http://localhost:3004/products/9780765326386/alsoBought')
+    // .then((res) => {console.log(res.data)})
+
     Promise.all([
       axios.get(`http://localhost:8000/reviewssummary/9781524763169`),
       axios.get(`http://localhost:8000/reviewssummary/9781571311931`),
@@ -33,7 +36,8 @@ class App extends React.Component {
       axios.get(`http://localhost:8000/reviewssummary/9781982157999`),
       axios.get('http://localhost:3004/products/9780765326386/alsoBought'),
     ])
-    .then( ([res1, res2, res3, res4, res5, res6, res7, res8, res9, res10, res11]) => {
+    .then(([res1, res2, res3, res4, res5, res6, res7, res8, res9, res10, res11]) => {
+      // console.log(res11);
       this.setState({
         productData: res11.data,
         reviewsData: [res1.data, res2.data, res3.data, res4.data, res5.data, res6.data, res7.data, res8.data, res9.data, res10.data],
@@ -82,7 +86,7 @@ class App extends React.Component {
       return (<h1 style={{textAlign: 'center'}}>Loading...</h1>);
     }
 
-    console.log(this.state);
+    // console.log(this.state);
 
     return (
       <div>

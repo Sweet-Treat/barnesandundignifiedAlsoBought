@@ -11,9 +11,9 @@ const app = express();
 describe('Express', () => {
   test('GET request should receive a valid response', (done) => {
     request(app)
-      .get('/products/:rootIsbn/alsoBought')
+      .get('/products/9780765326386/alsoBought')
       .then((res) => {
-        console.log('RESPONSE IS HERE LOOK HERE', res.data)
+        // console.log('RESPONSE IS HERE LOOK HERE', res.data)
         expect(200);
         expect(res.body).not.toBe(undefined);
         expect(typeof res.body).toBe('object');
