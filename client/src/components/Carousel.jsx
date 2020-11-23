@@ -10,39 +10,54 @@ let Carousel = (props) => {
   let limitReviews = [];
   let combinedDB = [];
 
-  let randomImages = ['https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175', 'https://source.unsplash.com/random/150x175'];
+  let randomImages = [
+    'https://prodimage.images-bn.com/pimages/9780765326386_p0_v8_s550x406.jpg',
+    'https://prodimage.images-bn.com/pimages/9780316187183_p0_v3_s550x406.jpg',
+    'https://prodimage.images-bn.com/pimages/9781250813602_p0_v1_s550x406.jpg',
+    'https://picsum.photos/id/1/150/175',
+    'https://picsum.photos/id/10/150/175',
+    'https://picsum.photos/id/100/150/175',
+    'https://picsum.photos/id/1000/150/175',
+    'https://picsum.photos/id/1001/150/175',
+    'https://picsum.photos/id/1002/150/175',
+    'https://picsum.photos/id/1003/150/175',
+  ];
+  let limitImages = [];
 
 
 // Algo to confirm the same Book Genre, then limit to 7 viewable books depending on which arrow is clicked
   // Left arrow clicked
   if (props.books.leftArrow === true) {
-    for (var k = 0; k < productData.length; k++) {
-      if (originalGenre === productData[k].genre) {
-        limitRelatedBooks.push(productData[k])
+    productData.forEach(relatedBook => {
+      if (originalGenre === relatedBook.genre) {
+        limitRelatedBooks.push(relatedBook)
       }
-    }
+    })
     limitRelatedBooks = limitRelatedBooks.slice(0,7);
     for (var i = 0; i < reviewsData.length; i++) {
       if (reviewsData[i] !== reviewsData[i+1]) {
         limitReviews = reviewsData.slice(0, 7);
       }
     }
+    limitImages = randomImages.slice(0,7);
+
   // Right arrow clicked
   } else {
-    for (var l = 0; l < productData.length; l++) {
-      if (originalGenre === productData[l].genre) {
-        limitRelatedBooks.push(productData[l])
+    productData.forEach(relatedBook => {
+      if (originalGenre === relatedBook.genre) {
+        limitRelatedBooks.push(relatedBook)
       }
-    }
+    })
     limitRelatedBooks = limitRelatedBooks.slice(3,10);
     for (var j = 0; j < reviewsData.length; j++) {
       if (reviewsData[j] !== reviewsData[j+1]) {
         limitReviews = reviewsData.slice(3, 10);
       }
     }
+    limitImages= randomImages.slice(3,10);
   }
 
-// Combine data from both DB after filtered above
+// Combine data from both DBs after filtered above
 for (var i = 0; i < limitRelatedBooks.length; i++) {
   combinedDB[i] = {
     author: limitRelatedBooks[i].author,
@@ -69,16 +84,12 @@ for (var i = 0; i < limitRelatedBooks.length; i++) {
     // Map through new array and render that new map
 
 
-
 // HD QUESTIONS
 // - Why doesn't Unsplash random image produce a new image w/ each iteration? (look up image API)
 // - How can I map both Product & Review data together?
 
 
   let mapProductData = combinedDB.map((elem, index) => {
-
-    // console.log(elem.imgUrl)
-
     // Title's longer than 35 characters long are truncated with "..."
     let title = '';
     if (elem.title.length > 35) {
@@ -90,7 +101,7 @@ for (var i = 0; i < limitRelatedBooks.length; i++) {
     return (
       <div className="carousel">
       <ul className="book">
-        <img className="image" onClick={() => {props.titleClick(title)}} src='https://source.unsplash.com/random/150x175'></img><br/>
+        <img className="image" onClick={() => {props.titleClick(title)}} src={limitImages[index]}></img><br/>
         <div className="title" onClick={() => {props.titleClick(title)}}>{title}</div>
         <div onClick={() => {props.authorClick(elem.author)}}>by {elem.author}</div>
         <div>
