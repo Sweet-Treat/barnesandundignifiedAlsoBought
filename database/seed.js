@@ -89,7 +89,7 @@ let seedData = () => {
         isbn: 9781571311931,
         title: 'World of Wonders: In Praise of Fireflies, Whale Sharks, and Other Astonishments (B&N Exclusive Gift Edition)',
         author: 'Aimee Nezhukumatathil',
-        genre: 'Fantasy'
+        genre: 'Nonfiction'
       },
       {
         isbn: 9781250793676,
@@ -107,7 +107,7 @@ let seedData = () => {
         isbn: 9780670020553,
         title: 'The Magicians (Magicians Series #1)',
         author: 'Lev Grossman',
-        genre: 'Fantasy'
+        genre: 'Graphic novel'
       },
       {
         isbn: 9780765386489,
@@ -119,25 +119,25 @@ let seedData = () => {
         isbn: 9781250088482,
         title: 'The Empire\'s Ghost: A Novel',
         author: 'Isabelle Steiger',
-        genre: 'Fantasy'
+        genre: 'Fiction'
       },
       {
         isbn: 9781524796372,
         title: 'Lost Roses',
         author: 'Martha Hall Kelly',
-        genre: 'Fantasy'
+        genre: 'Romance'
       },
       {
         isbn: 9780062667632,
         title: 'Leave the World Behind Alam',
         author: 'Rumaan Alam',
-        genre: 'Fantasy'
+        genre: 'Nonfiction'
       },
       {
         isbn: 9781982157999,
         title: 'The Answer Is...: Reflections on My Life',
         author: 'Alex Trebek',
-        genre: 'Fantasy'
+        genre: 'Diary'
       },
     ]
   };
