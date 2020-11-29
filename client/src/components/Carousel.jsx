@@ -3,12 +3,14 @@ import StarRatings from 'react-star-ratings';
 
 
 let Carousel = (props) => {
-  let originalGenre = props.books.productData[0].genre;
-  let productData = props.books.productData[0].relatedBooks;
+  console.log('PROPS:', props);
+  let originalGenre = props.books.currentBook.genre;
+  let productData = props.books.relatedBooks;
   let reviewsData = props.books.reviewsData;
   let limitRelatedBooks = [];
   let limitReviews = [];
   let combinedDB = [];
+
 
   let randomImages = [
     'https://prodimage.images-bn.com/pimages/9780765326386_p0_v8_s550x406.jpg',
