@@ -35,6 +35,19 @@ app.get('/products/:rootIsbn/alsoBought', (req, res) => {
     ])
   })
   .then((ratingsData) => {
+    let randomImages = [
+      'https://picsum.photos/id/1/150/175',
+      'https://picsum.photos/id/10/150/175',
+      'https://picsum.photos/id/100/150/175',
+      'https://picsum.photos/id/1000/150/175',
+      'https://picsum.photos/id/1001/150/175',
+      'https://picsum.photos/id/1002/150/175',
+      'https://picsum.photos/id/1003/150/175',
+      'https://picsum.photos/id/1004/150/175',
+      'https://picsum.photos/id/1005/150/175',
+      'https://picsum.photos/id/1006/150/175',
+    ];
+
     let combinedData = bulkData.map((bulk, index) => {
       return {
         _id: bulk.id,
@@ -42,7 +55,8 @@ app.get('/products/:rootIsbn/alsoBought', (req, res) => {
         title: bulk.title,
         author: bulk.author,
         genre: bulk.genre,
-        avgRating: ratingsData[index].data.avgRating
+        avgRating: ratingsData[index].data.avgRating,
+        img: randomImages[index]
       }
     })
     return combinedData;
