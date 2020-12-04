@@ -67,6 +67,9 @@ app.get('/products/:rootIsbn/alsoBought', (req, res) => {
   .catch((err) => {
     console.log(err);
   })
+  .finally(() => {
+    console.log('Server parsing complete')
+  })
 });
 
 

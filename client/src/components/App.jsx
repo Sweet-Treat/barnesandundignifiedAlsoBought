@@ -19,6 +19,19 @@ class App extends React.Component {
     this.rightClick = this.rightClick.bind(this);
     this.titleClick = this.titleClick.bind(this);
     this.authorClick = this.authorClick.bind(this);
+    this.getWindowParams = this.getWindowParams.bind(this);
+  }
+
+  getWindowParams() {
+    let queryUrl = window.location.search;
+    // console.log(queryUrl);
+
+    let urlParams = new URLSearchParams(queryUrl);
+
+    let isbn = urlParams.get('isbn')
+    console.log(isbn);
+
+    console.log(urlParams.has('isbn'));
   }
 
   getData(isbn) {
@@ -36,6 +49,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getData();
+    this.getWindowParams();
   }
 
   leftClick() {
