@@ -1,73 +1,121 @@
 import React from 'react';
-
+import StarRatings from 'react-star-ratings';
 
 let Carousel = (props) => {
+  let productData = props.relatedBooks;
+  let limitProductData;
 
-  // TODO: map over res.data and setState //
-  let data = props.books.data
-  let randomImage = "https://source.unsplash.com/random/150x175";
-  let leftArrowState = true;
-  let rightArrowState = false;
+  if (props.leftArrow) {
+    limitProductData = productData.slice(0, 7);
+  } else if (props.rightArrow) {
+    limitProductData = productData.slice(3, 10);
+  }
 
-  // scroll logic
-  // display only 7 images
-    // left arrow set to "True" by default
-  // if right arrow clicked, remove first 3, show last 3
-    // mark right arrow as "True" and left as "False"
-  // if left arrow clicked, rmeove last 3, show first 3
-    // mark left arrow as "True" and right as "False"
-
-  // default = slice(0, 7).
-    // onClick left = no action
-    // onclick right = re-render w/ slice (3,  10) && set right to false, left to true
-
-  // EVENTUALLY - get arrow to gray out and No-Action if all the way to the right or left
-
-  let map = data.map((elem) => {
-    // Title should only be 30 characters long, then "..."
+  let mapRelatedBooks = limitProductData.map((elem, index) => {
+    // Title's longer than 35 characters long are truncated with "..."
     let title = '';
-    if (elem.title.length > 38) {
-      title = elem.title.substring(0, 38) + '...';
+    if (elem.title.length > 35) {
+      title = elem.title.substring(0, 35) + '...';
     } else {
       title = elem.title;
     }
 
-    return(
-      <div class="carousel">
-        <ul class="book">
-    <img src='https://source.unsplash.com/random/150x175'></img><br/>
-          {title}<br/>
-          by {elem.author}<br/>
-          {elem.rating}
+    return (
+      <div className="carousel">
+        <ul className="book">
+          <img className="image" onClick={() => {props.titleClick(title)}} src={elem.img}></img><br/>
+          <div className="title" onClick={() => {props.titleClick(title)}}>{title}</div>
+          <div onClick={() => {props.authorClick(elem.author)}}>by {elem.author}</div>
+          <div>
+            <StarRatings
+              rating={elem.avgRating}
+              starDimension="20px"
+              starSpacing=".5px"
+              starRatedColor="orange"
+              starEmptyColor="lightGrey"
+            />
+          </div>
         </ul>
       </div>
-    )
-  })
+    );
+  });
 
   return (
     <div>
       <div style={{display: 'flex'}}>
-        <button><i class="arrow left" onClick={props.leftClick}></i></button>
-        {map}
-        <button><i class="arrow right" onClick={props.rightClick}></i></button>
+        <p><i className="arrow left" onClick={props.leftClick}></i></p>
+        {mapRelatedBooks.slice(0, 7)}
+        <p><i className="arrow right" onClick={props.rightClick}></i></p>
       </div>
     </div>
-
-  )
-}
+  );
+};
 
 export default Carousel;
 
-        {/* <div className="image">image placeholder</div>
-        <div className="title">{elem.title}</div>
-        <div className="author">{elem.author}></div>
-        <div className="rating">{elem.rating}</div> */}
 
 
-// ask other service for title and endpoint
+// TODO
+// - carousel doesn't "scroll" seamlessly
+// FUTURE CSS - get arrow to gray out and No-Action if all the way to the right or left
 
-// page load time can be slow = on page load asking service every time for data
-// next iteration = cache data to enable faster render
+////////
 
+// V2 CONSIDERATIONS //
+  // page load time can be slow = on page load asking service every time for data
+  // next iteration = cache data to enable faster render
 
-// What do I need to get from other services?
+// "RELATED" ALGO IDEAS
+  // What do I need to get from other services?
+  // Fulfillment service/purchase history
+  // What are other orders if someone bought this book?
+  // Which should we show? (genre)
+  // Most frequently purchased book in genre
+
+////////
+
+////CHANGED DATA MANIPULATION TO LIVE ON SERVER. TEMPORARILY KEEPING FOR REFERENCE////
+// // Algo to confirm the same Book Genre, then limit to 7 viewable books depending on which arrow is clicked
+//   // Left arrow clicked
+//   if (props.books.leftArrow === true) {
+//     productData.forEach(relatedBook => {
+//       if (originalGenre === relatedBook.genre) {
+//         limitRelatedBooks.push(relatedBook)
+//       }
+//     })
+//     limitRelatedBooks = limitRelatedBooks.slice(0,7);
+//     for (var i = 0; i < reviewsData.length; i++) {
+//       if (reviewsData[i] !== reviewsData[i+1]) {
+//         limitReviews = reviewsData.slice(0, 7);
+//       }
+//     }
+//     limitImages = randomImages.slice(0,7);
+
+//   // Right arrow clicked
+//   } else {
+//     productData.forEach(relatedBook => {
+//       if (originalGenre === relatedBook.genre) {
+//         limitRelatedBooks.push(relatedBook)
+//       }
+//     })
+//     limitRelatedBooks = limitRelatedBooks.slice(3,10);
+//     for (var j = 0; j < reviewsData.length; j++) {
+//       if (reviewsData[j] !== reviewsData[j+1]) {
+//         limitReviews = reviewsData.slice(3, 10);
+//       }
+//     }
+//     limitImages= randomImages.slice(3,10);
+//   }
+
+// // Combine data from both DBs after filtered above
+// for (var i = 0; i < limitRelatedBooks.length; i++) {
+//   combinedDB[i] = {
+//     author: limitRelatedBooks[i].author,
+//     genre: limitRelatedBooks[i].genre,
+//     isbn: limitRelatedBooks[i].isbn,
+//     title: limitRelatedBooks[i].title,
+//     _id: limitRelatedBooks[i]._id,
+//     totalReviews: limitReviews[i].totalReviews,
+//     avgRating: limitReviews[i].avgRating
+//   }
+// }

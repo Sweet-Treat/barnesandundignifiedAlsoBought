@@ -1,21 +1,21 @@
-const db  = require('./index.js');
+const db = require('./index.js');
 const Book = require('./index.js');
 
 
 let authorGenerator = () => {
   let firstName = ['Joe', 'Susan', 'Jake', 'Cherise', 'Ann', 'Alex', 'Jess', 'Daniel', 'Mike', 'Amber', 'Walter', 'Adney',
-'Aldo', 'Aleyn', 'Alford', 'Amherst', 'Annabeth', 'Annalynn',
-'Araminta', 'Ardys', 'Ashland', 'Jax', 'Jaxon', 'Jay', 'Jet'];
+    'Aldo', 'Aleyn', 'Alford', 'Amherst', 'Annabeth', 'Annalynn',
+    'Araminta', 'Ardys', 'Ashland', 'Jax', 'Jaxon', 'Jay', 'Jet'];
   let lastName = ['Smith', 'Lewis', 'Miller', 'Hill', 'Jones', 'Silva', 'Garrett', 'Johnson', 'Garcia', 'Davis', 'Brighton', 'Broderick', 'Bronson', 'Bryce', 'Burdette', 'Burle', 'Byrd', 'Byron', 'Cabal', 'Cage', 'Cahir', 'Cavalon', 'Peony', 'Petunia', 'Pixie'];
   let fullName = [];
 
   for (var i = 0; i < 100; i++) {
-    var random = Math.floor(Math.random() * 25)
-    fullName.push(`${firstName[random]} ${lastName[random]}`)
+    var random = Math.floor(Math.random() * 25);
+    fullName.push(`${firstName[random]} ${lastName[random]}`);
   }
 
   return fullName;
-}
+};
 let authors = authorGenerator();
 
 //////////////////////////////////////
@@ -25,35 +25,35 @@ let isbnGenerator = () => {
 
   for (var i = 0; i < 100; i++) {
     let max = Math.pow(10, 10);
-    var min = max/10;
+    var min = max / 10;
     var number = Math.floor(Math.random() * min) + min;
 
 
-    isbnArr.push(parseInt('979'+ ("" + number).substring(0)));
+    isbnArr.push(parseInt('979' + ('' + number).substring(0)));
   }
   return isbnArr;
-}
+};
 let isbn = isbnGenerator();
 
 //////////////////////////////////////
 
 let titleGenerator = () => {
   let nouns = ['Actor', 'Gold', 'Painting', 'Advertisement', 'Grass', 'Parrot', 'Afternoon', 'Greece', 'Pencil', 'Airport', 'Guitar',
-  'Piano', 'Ambulance', 'Hair', 'Pillow', 'Animal', 'Hamburger', 'Pizza', 'Answer', 'Helicopter', 'Planet', 'Apple', 'Helmet', 'Plastic', 'Army'];
+    'Piano', 'Ambulance', 'Hair', 'Pillow', 'Animal', 'Hamburger', 'Pizza', 'Answer', 'Helicopter', 'Planet', 'Apple', 'Helmet', 'Plastic', 'Army'];
   let adjectives = ['Alive', 'Better', 'Careful', 'Careful', 'Clever', 'Dead', 'Easy', 'Famous', 'Gifted', 'Hallowed', 'Helpful', 'Important',
-'Inexpensive', 'Mealy', 'Mushy', 'Diligent', 'Poor', 'Powerful', 'Rich', 'Shy', 'Tender', 'Unimportant', 'Uninterested', 'Vast', 'Wrong'];
+    'Inexpensive', 'Mealy', 'Mushy', 'Diligent', 'Poor', 'Powerful', 'Rich', 'Shy', 'Tender', 'Unimportant', 'Uninterested', 'Vast', 'Wrong'];
   let verbs = ['Act', 'Answer', 'Approve', 'Arrange', 'Break', 'Build', 'Buy', 'Coach', 'Color', 'Cough', 'Create', 'Complete',
-'Cry', 'Dance', 'Describe', 'Draw', 'Drink', 'Eat', 'Edit', 'Enter', 'Exit', 'Imitate', 'Invent', 'Jump', 'Laugh'];
+    'Cry', 'Dance', 'Describe', 'Draw', 'Drink', 'Eat', 'Edit', 'Enter', 'Exit', 'Imitate', 'Invent', 'Jump', 'Laugh'];
 
   let fullTitle = [];
 
   for (var i = 0; i < 100; i++) {
-    var random = Math.floor(Math.random() * 25)
-    fullTitle.push(`${adjectives[random]} ${nouns[random]} ${verbs[random]}`)
+    var random = Math.floor(Math.random() * 25);
+    fullTitle.push(`${adjectives[random]} ${nouns[random]} ${verbs[random]}`);
   }
 
   return fullTitle;
-}
+};
 let titles = titleGenerator();
 
 //////////////////////////////////////
@@ -67,31 +67,165 @@ let ratingGenerator = () => {
     randomRatings.push(ratings[number]);
   }
   return randomRatings;
-}
+};
 let ratings = ratingGenerator();
 
 //////////////////////////////////////
 
-let seedData = () => {
-  let results = [];
+let categoryGenerator = () => {
+  let category = ['Nonfiction', 'Fiction', 'History', 'Fantasy', 'Romance', 'Home and garden', 'Graphic novel', 'Humor', 'Autobiography', 'Business/economics', 'Cookbook', 'Diary'];
+  let randomCategory = [];
+
   for (var i = 0; i < 100; i++) {
+    var number = Math.floor(Math.random() * category.length);
+    randomCategory.push(category[number]);
+  }
+  return randomCategory;
+}
+let category = categoryGenerator();
+
+//////////////////////////////////////
+
+// Seeded w/ 10 real books, then 100 fake books
+let seedData = () => {
+  let results = [
+  {
+    rootIsbn: 9781524763169, // A Promised Land
+    genre: 'Autobiography',
+    relatedBooks: []
+  },
+  {
+    rootIsbn: 9781571311931, // World of Wonders: In Praise of Fireflies, Whale Sharks, and Other Astonishments (B&N Exclusive Gift Edition)
+    genre: 'Nonfiction',
+    relatedBooks: []
+  },
+  {
+    rootIsbn: 9780765326386, // Rhythm of War (Stormlight Archive Series #4)
+    genre: 'Fiction',
+    relatedBooks: []
+  },
+  {
+    rootIsbn: 9780316187183, // The Trouble with Peace
+    genre: 'Fantasy',
+    relatedBooks: []
+  },
+  {
+    rootIsbn: 9780670020553, // The Magicians (Magicians Series #1)
+    genre: 'Graphic novel',
+    relatedBooks: []
+  },
+  {
+    rootIsbn: 9780765386489, // Soleri: A Novel
+    genre: 'Fantasy',
+    relatedBooks: []
+  },
+  {
+    rootIsbn: 9781250088482, // The Empire\'s Ghost: A Novel
+    genre: 'Fiction',
+    relatedBooks: []
+  },
+  {
+    rootIsbn: 9781524796372, // Lost Roses
+    genre: 'Romance',
+    relatedBooks: []
+  },
+  {
+    rootIsbn: 9780062667632, // Leave the World Behind Alam
+    genre: 'Nonfiction',
+    relatedBooks: []
+  },
+  {
+    rootIsbn: 9781982157999, // The Answer Is...: Reflections on My Life
+    genre: 'Diary',
+    relatedBooks: []
+  },
+]
+    // rootIsbn: '9780765326386',
+    // genre: 'Fantasy',
+    // relatedBooks: [
+    //   {
+    //     isbn: 9781524763169,
+    //     title: 'A Promised Land',
+    //     author: 'Barack Obama',
+    //     genre: 'Autobiography'
+    //   },
+    //   {
+    //     isbn: 9781571311931,
+    //     title: 'World of Wonders: In Praise of Fireflies, Whale Sharks, and Other Astonishments (B&N Exclusive Gift Edition)',
+    //     author: 'Aimee Nezhukumatathil',
+    //     genre: 'Nonfiction'
+    //   },
+    //   {
+    //     isbn: 9781250793676,
+    //     title: 'Rhythm of War (Signed Book) (Stormlight Archive Series #4)',
+    //     author: 'Brandon Sanderson',
+    //     genre: 'Fantasy'
+    //   },
+    //   {
+    //     isbn: 9780316187183,
+    //     title: 'The Trouble with Peace',
+    //     author: 'Joe Abercrombie',
+    //     genre: 'Fantasy'
+    //   },
+    //   {
+    //     isbn: 9780670020553,
+    //     title: 'The Magicians (Magicians Series #1)',
+    //     author: 'Lev Grossman',
+    //     genre: 'Graphic novel'
+    //   },
+    //   {
+    //     isbn: 9780765386489,
+    //     title: 'Soleri: A Novel',
+    //     author: 'Michael Johnston',
+    //     genre: 'Fantasy'
+    //   },
+    //   {
+    //     isbn: 9781250088482,
+    //     title: 'The Empire\'s Ghost: A Novel',
+    //     author: 'Isabelle Steiger',
+    //     genre: 'Fiction'
+    //   },
+    //   {
+    //     isbn: 9781524796372,
+    //     title: 'Lost Roses',
+    //     author: 'Martha Hall Kelly',
+    //     genre: 'Romance'
+    //   },
+    //   {
+    //     isbn: 9780062667632,
+    //     title: 'Leave the World Behind Alam',
+    //     author: 'Rumaan Alam',
+    //     genre: 'Nonfiction'
+    //   },
+    //   {
+    //     isbn: 9781982157999,
+    //     title: 'The Answer Is...: Reflections on My Life',
+    //     author: 'Alex Trebek',
+    //     genre: 'Diary'
+    //   },
+    // ]
+  // };
+
+  for (var i = 0; i < 10; i++) {
     var random = Math.floor(Math.random() * 100);
 
-  results.push({
-    'relatedIsbn': 9780765326386,
-    'isbn': isbn[random],
-    'title': titles[random],
-    'author': authors[random],
-    'rating': ratings[random]
+    results.forEach(elem => {
+      elem.relatedBooks.push({
+        isbn: isbn[random],
+        title: titles[random],
+        author: authors[random],
+        genre: elem.genre
+      })
     })
+    // results.relatedBooks.push({
+    //   isbn: isbn[random],
+    //   title: titles[random],
+    //   author: authors[random],
+    //   genre: category[random]
+    // })
   }
   return results;
 };
-
-
-
-
-
 
 const sampleBooks = seedData();
 

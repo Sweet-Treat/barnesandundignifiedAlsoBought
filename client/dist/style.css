@@ -13,7 +13,7 @@ body {
   display: inline-block;
   padding: 6px;
   position: center;
-  margin-top: 80px;
+  margin-top: 100px;
   /* margin-top: 140px */
 }
 
@@ -23,7 +23,7 @@ body {
   display: inline-block;
   padding: 6px;
   position: center;
-  margin-top: 500%;
+  margin-top: 100px;
   cursor:pointer;
 }
 
@@ -41,24 +41,29 @@ body {
 .carousel {
   display:grid;
   grid-auto-flow:column;
-  grid-gap:10px;
-  margin:30px;
+  grid-gap:5px;
+  margin:5px;
   overflow:auto;
-  border: 1px solid gray;
+  width: 90%;
+  height: 425px;
+  align-items: top;
 }
 
 .carousel ul {
   margin: 0;
   padding: 0;
-  width: 100%;
+  width: 90%;
   text-align: center;
 }
-/* .carousel > *{
-  padding:30px; color:#fff; font-size:20px; background:#cc0000;
-} */
+
+.image {
+  width: 140px;
+  height: 190px;
+}
 
 .header {
   display: grid;
+  font-size: 25px;
   width: 100%;
   align-items: center;
   text-align: center;
@@ -68,34 +73,15 @@ body {
 
 }
 
-/* .header {
-  > * {
-  grid-column: 2 / -2;
-}
-
-.header {
-  > .full {
-  grid-column: 1 / -1;
-}
-
-.item {
-  display: grid;
-  grid-gap: calc(var(--gutter) / 2);
-  grid-template-columns: repeat(6, calc(50% - var(--gutter) * 2));
-  grid-template-rows: minmax(150px, 1fr);
-
-  overflow-x: scroll;
-  scroll-snap-type: x proximity;
-  padding-bottom: calc(.75 * var(--gutter));
-  margin-bottom: calc(-.25 * var(--gutter));
-} */
-
 .header:before,
 .header:after {
   content: '';
   border-top: 2px solid;
 }
 
+#stars {
+  size: 5px;
+}
 /*
 image carousel
   - horizontal scroll
