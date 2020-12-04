@@ -9,17 +9,31 @@ const app = express();
 
 
 describe('Express', () => {
-  test('GET request should receive a valid response', (done) => {
+  test('Similar Items GET request should receive a valid response', (done) => {
     request(app)
       .get('/products/9780765326386/alsoBought')
       .then((res) => {
-        // console.log('RESPONSE IS HERE LOOK HERE', res.data)
         expect(200);
         expect(res.body).not.toBe(undefined);
         expect(typeof res.body).toBe('object');
         done();
       });
-  });
+    });
+
+  test('Ratings GET request should receive a valid response', (done) => {
+    request(app)
+      .get(`/reviewssummary/9780765326386`)
+      .then((res) => {
+        expect(200);
+        expect(res.body).not.toBe(undefined);
+        expect(typeof res.body).toBe('object');
+        done();
+      });
+    });
+});
+
+
+
 
   // test('Database', (done) => {
   //   request(app)
@@ -28,7 +42,5 @@ describe('Express', () => {
   //     console.log("RESPONSE", response)
   //   })
   // })
-
-});
 
 

@@ -38,7 +38,7 @@ let getData = (isbn, callback) => {
   }).limit(10);
 };
 
-module.exports = Book;
+module.exports.Book = Book;
 module.exports.getData = getData;
 
 

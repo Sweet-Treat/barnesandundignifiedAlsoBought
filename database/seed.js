@@ -88,82 +88,141 @@ let category = categoryGenerator();
 
 // Seeded w/ 10 real books, then 100 fake books
 let seedData = () => {
-  let results = {
-    rootIsbn: '9780765326386',
+  let results = [
+  {
+    rootIsbn: 9781524763169, // A Promised Land
+    genre: 'Autobiography',
+    relatedBooks: []
+  },
+  {
+    rootIsbn: 9781571311931, // World of Wonders: In Praise of Fireflies, Whale Sharks, and Other Astonishments (B&N Exclusive Gift Edition)
+    genre: 'Nonfiction',
+    relatedBooks: []
+  },
+  {
+    rootIsbn: 9780765326386, // Rhythm of War (Stormlight Archive Series #4)
+    genre: 'Fiction',
+    relatedBooks: []
+  },
+  {
+    rootIsbn: 9780316187183, // The Trouble with Peace
     genre: 'Fantasy',
-    relatedBooks: [
-      {
-        isbn: 9781524763169,
-        title: 'A Promised Land',
-        author: 'Barack Obama',
-        genre: 'Autobiography'
-      },
-      {
-        isbn: 9781571311931,
-        title: 'World of Wonders: In Praise of Fireflies, Whale Sharks, and Other Astonishments (B&N Exclusive Gift Edition)',
-        author: 'Aimee Nezhukumatathil',
-        genre: 'Nonfiction'
-      },
-      {
-        isbn: 9781250793676,
-        title: 'Rhythm of War (Signed Book) (Stormlight Archive Series #4)',
-        author: 'Brandon Sanderson',
-        genre: 'Fantasy'
-      },
-      {
-        isbn: 9780316187183,
-        title: 'The Trouble with Peace',
-        author: 'Joe Abercrombie',
-        genre: 'Fantasy'
-      },
-      {
-        isbn: 9780670020553,
-        title: 'The Magicians (Magicians Series #1)',
-        author: 'Lev Grossman',
-        genre: 'Graphic novel'
-      },
-      {
-        isbn: 9780765386489,
-        title: 'Soleri: A Novel',
-        author: 'Michael Johnston',
-        genre: 'Fantasy'
-      },
-      {
-        isbn: 9781250088482,
-        title: 'The Empire\'s Ghost: A Novel',
-        author: 'Isabelle Steiger',
-        genre: 'Fiction'
-      },
-      {
-        isbn: 9781524796372,
-        title: 'Lost Roses',
-        author: 'Martha Hall Kelly',
-        genre: 'Romance'
-      },
-      {
-        isbn: 9780062667632,
-        title: 'Leave the World Behind Alam',
-        author: 'Rumaan Alam',
-        genre: 'Nonfiction'
-      },
-      {
-        isbn: 9781982157999,
-        title: 'The Answer Is...: Reflections on My Life',
-        author: 'Alex Trebek',
-        genre: 'Diary'
-      },
-    ]
-  };
+    relatedBooks: []
+  },
+  {
+    rootIsbn: 9780670020553, // The Magicians (Magicians Series #1)
+    genre: 'Graphic novel',
+    relatedBooks: []
+  },
+  {
+    rootIsbn: 9780765386489, // Soleri: A Novel
+    genre: 'Fantasy',
+    relatedBooks: []
+  },
+  {
+    rootIsbn: 9781250088482, // The Empire\'s Ghost: A Novel
+    genre: 'Fiction',
+    relatedBooks: []
+  },
+  {
+    rootIsbn: 9781524796372, // Lost Roses
+    genre: 'Romance',
+    relatedBooks: []
+  },
+  {
+    rootIsbn: 9780062667632, // Leave the World Behind Alam
+    genre: 'Nonfiction',
+    relatedBooks: []
+  },
+  {
+    rootIsbn: 9781982157999, // The Answer Is...: Reflections on My Life
+    genre: 'Diary',
+    relatedBooks: []
+  },
+]
+    // rootIsbn: '9780765326386',
+    // genre: 'Fantasy',
+    // relatedBooks: [
+    //   {
+    //     isbn: 9781524763169,
+    //     title: 'A Promised Land',
+    //     author: 'Barack Obama',
+    //     genre: 'Autobiography'
+    //   },
+    //   {
+    //     isbn: 9781571311931,
+    //     title: 'World of Wonders: In Praise of Fireflies, Whale Sharks, and Other Astonishments (B&N Exclusive Gift Edition)',
+    //     author: 'Aimee Nezhukumatathil',
+    //     genre: 'Nonfiction'
+    //   },
+    //   {
+    //     isbn: 9781250793676,
+    //     title: 'Rhythm of War (Signed Book) (Stormlight Archive Series #4)',
+    //     author: 'Brandon Sanderson',
+    //     genre: 'Fantasy'
+    //   },
+    //   {
+    //     isbn: 9780316187183,
+    //     title: 'The Trouble with Peace',
+    //     author: 'Joe Abercrombie',
+    //     genre: 'Fantasy'
+    //   },
+    //   {
+    //     isbn: 9780670020553,
+    //     title: 'The Magicians (Magicians Series #1)',
+    //     author: 'Lev Grossman',
+    //     genre: 'Graphic novel'
+    //   },
+    //   {
+    //     isbn: 9780765386489,
+    //     title: 'Soleri: A Novel',
+    //     author: 'Michael Johnston',
+    //     genre: 'Fantasy'
+    //   },
+    //   {
+    //     isbn: 9781250088482,
+    //     title: 'The Empire\'s Ghost: A Novel',
+    //     author: 'Isabelle Steiger',
+    //     genre: 'Fiction'
+    //   },
+    //   {
+    //     isbn: 9781524796372,
+    //     title: 'Lost Roses',
+    //     author: 'Martha Hall Kelly',
+    //     genre: 'Romance'
+    //   },
+    //   {
+    //     isbn: 9780062667632,
+    //     title: 'Leave the World Behind Alam',
+    //     author: 'Rumaan Alam',
+    //     genre: 'Nonfiction'
+    //   },
+    //   {
+    //     isbn: 9781982157999,
+    //     title: 'The Answer Is...: Reflections on My Life',
+    //     author: 'Alex Trebek',
+    //     genre: 'Diary'
+    //   },
+    // ]
+  // };
 
-  for (var i = 0; i < 100; i++) {
+  for (var i = 0; i < 10; i++) {
     var random = Math.floor(Math.random() * 100);
 
-    results.relatedBooks.push({
-      isbn: isbn[random],
-      title: titles[random],
-      author: authors[random],
-      genre: category[random]
+    results.forEach(elem => {
+      elem.relatedBooks.push({
+        isbn: isbn[random],
+        title: titles[random],
+        author: authors[random],
+        genre: elem.genre
+      })
     })
+    // results.relatedBooks.push({
+    //   isbn: isbn[random],
+    //   title: titles[random],
+    //   author: authors[random],
+    //   genre: category[random]
+    // })
   }
   return results;
 };

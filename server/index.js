@@ -3,46 +3,85 @@ var cors = require('cors')
 const app = express();
 const port = process.env.PORT || 3004;
 const db = require('../database');
+const axios = require('axios').default;
 
 app.use(cors())
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-// Retrieve dummy seed data
 app.get('/products/:rootIsbn/alsoBought', (req, res) => {
-  db.getData(req, (err, data) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.status(200).send(data);
-    }
-  });
+  let bulkData;
+  db.Book.findOne({rootIsbn: req.params.rootIsbn})
+  .then((res) => {
+    let relatedISBNs = res.relatedBooks.map((elem) => {
+      return elem.isbn
+    })
+    bulkData = res.relatedBooks;
+    return relatedISBNs;
+  })
+  .then((relatedBookIsbns) => {
+    return Promise.all([
+      axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[0])}/reviews/summary`),
+      axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[1])}/reviews/summary`),
+      axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[2])}/reviews/summary`),
+      axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[3])}/reviews/summary`),
+      axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[4])}/reviews/summary`),
+      axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[5])}/reviews/summary`),
+      axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[6])}/reviews/summary`),
+      axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[7])}/reviews/summary`),
+      axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[8])}/reviews/summary`),
+      axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[9])}/reviews/summary`)
+    ])
+  })
+  .then((ratingsData) => {
+    let combinedData = bulkData.map((bulk, index) => {
+      return {
+        _id: bulk.id,
+        isbn: bulk.isbn,
+        title: bulk.title,
+        author: bulk.author,
+        genre: bulk.genre,
+        avgRating: ratingsData[index].data.avgRating
+      }
+    })
+    return combinedData;
+  })
+  .then((data) => {
+    res.send(data)
+  })
+  .catch((err) => {
+    console.log(err);
+  })
 });
 
-// // Retrieve review data. Search criteria can be 'isbn' or 'title'
-// app.get('localhost:8000/reviewssummary/:identifier', (req, res) => {
-//   model.get({ISBN: req.params.identifier}, (err, data) => {
-//     if (err) {
-//       res.status(400).send('Controller: Error in get');
-//     } else {
-//       res.status(200).send(data);
-//     }
-//   });
-// })
 
-// // Retrieve product data. Search criteria will be 'isbn'
-// // Book categories = [“Nonfiction”, “Fiction”, “History”, “Fantasy”, “Romance” “Home and garden”, “Graphic novel”, “Humor”, “Autobiography”, “Business/economics”, “Cookbook”, “Diary”]
-// app.get('/product/:isbn', (req, res) => {
-//   // db.getData((err, data) => {
-//   //   if (err) {
-//   //     res.status(500).send('GET error:', err);
-//   //   } else {
-//   //     res.status(200).send(data)
-//   //   }
-//   // })
-// });
+// TODO //
+// [] Find ISBN from URL (ignore React Router info for now)
+// [X] Refactor DB to have 10 root ISBNs, and then 10 Related Books per root
+    // Make all DB genre to match root ISBN
+// [X] Change get request to be server side
+  // 1. Get root ISBN (already have in line 13)
+  // 2. Get related books to that root ISBN
+  // 3. Get ratings data of those related books
+  // send RES back as array of objects
+  // What shape will I send back to React // refactor
+
+
+
 
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);
 });
+
+
+  // Old server code. Temporarily keeping as a reference
+  // db.getData(req, (err, data) => {
+  //   if (err) {
+  //     res.status(500).send(err);
+  //   } else {
+  //     // console.log(data[0].relatedBooks)
+  //     // res.status(200).send(data);
+  //     return data;
+  //   }
+  // })

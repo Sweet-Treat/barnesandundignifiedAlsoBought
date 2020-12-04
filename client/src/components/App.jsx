@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Carousel from './Carousel.jsx';
+import Header from './Header.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -130,7 +131,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <h1 className="header">Customers Who Bought This Item Also Bought</h1>
+        <Header />
         <Carousel
           books={this.state}
           leftClick={this.leftClick}
