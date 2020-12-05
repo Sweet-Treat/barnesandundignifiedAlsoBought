@@ -20,25 +20,26 @@ class App extends React.Component {
   }
 
   // TODO //
-// [] Proxy
-// [] Get carousel to seamlessly scroll like B&N site
-// [] V2 = cache actual data from Avigail's service as relatedBooks, instead of populating with fake data
+  // [] Proxy
+  // [] Get carousel to seamlessly scroll like B&N site
+  // [] Error handling of undefined ratings data
+  // [] V2 = cache actual data from Avigail's service as relatedBooks, instead of populating with fake data
 
   getData() {
     let queryUrl = window.location.search;
     let urlParams = new URLSearchParams(queryUrl);
-    let paramIsbn = urlParams.get('isbn')
+    let paramIsbn = urlParams.get('isbn');
 
     axios.get(`http://localhost:3004/products/${paramIsbn}/alsoBought`)
-    .then(res => {
-      this.setState({
-        relatedBooks: res.data,
-        isLoading: false
+      .then(res => {
+        this.setState({
+          relatedBooks: res.data,
+          isLoading: false
+        });
       })
-    })
-    .catch((err) => {
-      console.log('REACT GET ERROR:', err)
-    })
+      .catch((err) => {
+        console.log('REACT GET ERROR:', err);
+      });
   }
 
   componentDidMount() {
@@ -66,11 +67,11 @@ class App extends React.Component {
   }
 
   titleClick(title) {
-    alert (`Redirecting to ${title}`)
+    alert (`Redirecting to ${title}`);
   }
 
   authorClick(author) {
-    alert (`Redirecting to other books written by ${author}`)
+    alert (`Redirecting to other books written by ${author}`);
   }
 
   render() {
@@ -106,22 +107,22 @@ export default App;
 // state === // currentBookIsbn: {isbn: '', genre: ''},
 // bind === // this.getWindowParams = this.getWindowParams.bind(this);
 // function ===
-  // getWindowParams() {
-  //   // URL param: http://localhost:3004/?isbn=9780765326386
-  //   let queryUrl = window.location.search;
-  //   let urlParams = new URLSearchParams(queryUrl);
-  //   let paramIsbn = urlParams.get('isbn')
-  //   console.log(paramIsbn);
-  //   // console.log(urlParams.has('isbn'));
+// getWindowParams() {
+//   // URL param: http://localhost:3004/?isbn=9780765326386
+//   let queryUrl = window.location.search;
+//   let urlParams = new URLSearchParams(queryUrl);
+//   let paramIsbn = urlParams.get('isbn')
+//   console.log(paramIsbn);
+//   // console.log(urlParams.has('isbn'));
 
-  //   // pass getData into getWindowParams as a callback (avoid infinite loop)
-  //   // this.setState({
-  //   //   currentBookIsbn: paramIsbn.toString()
-  //   // }, () => {
-  //   //   console.log(this.state.currentBookIsbn)
-  //   //   this.getData()
-  //   // })
-  // }
+//   // pass getData into getWindowParams as a callback (avoid infinite loop)
+//   // this.setState({
+//   //   currentBookIsbn: paramIsbn.toString()
+//   // }, () => {
+//   //   console.log(this.state.currentBookIsbn)
+//   //   this.getData()
+//   // })
+// }
 
-  // in getData... // axios.get(`http://localhost:3004/products/${this.state.currentBookIsbn}/alsoBought`)
+// in getData... // axios.get(`http://localhost:3004/products/${this.state.currentBookIsbn}/alsoBought`)
 

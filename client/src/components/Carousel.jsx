@@ -23,9 +23,9 @@ let Carousel = (props) => {
     return (
       <div className="carousel">
         <ul className="book">
-          <img className="image" onClick={() => {props.titleClick(title)}} src={elem.img}></img><br/>
-          <div className="title" onClick={() => {props.titleClick(title)}}>{title}</div>
-          <div onClick={() => {props.authorClick(elem.author)}}>by {elem.author}</div>
+          <img className="image" onClick={() => { props.titleClick(title); }} src={elem.img}></img><br/>
+          <div className="title" onClick={() => { props.titleClick(title); }}>{title}</div>
+          <div onClick={() => { props.authorClick(elem.author); }}>by {elem.author}</div>
           <div>
             <StarRatings
               rating={elem.avgRating}
@@ -62,15 +62,15 @@ export default Carousel;
 ////////
 
 // V2 CONSIDERATIONS //
-  // page load time can be slow = on page load asking service every time for data
-  // next iteration = cache data to enable faster render
+// page load time can be slow = on page load asking service every time for data
+// next iteration = cache data to enable faster render
 
 // "RELATED" ALGO IDEAS
-  // What do I need to get from other services?
-  // Fulfillment service/purchase history
-  // What are other orders if someone bought this book?
-  // Which should we show? (genre)
-  // Most frequently purchased book in genre
+// What do I need to get from other services?
+// Fulfillment service/purchase history
+// What are other orders if someone bought this book?
+// Which should we show? (genre)
+// Most frequently purchased book in genre
 
 ////////
 
