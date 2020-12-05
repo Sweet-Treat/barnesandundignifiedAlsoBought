@@ -1,6 +1,6 @@
 const db = require('./index.js');
 const Book = require('./index.js');
-
+const mongoose = require('mongoose');
 
 let authorGenerator = () => {
   let firstName = ['Joe', 'Susan', 'Jake', 'Cherise', 'Ann', 'Alex', 'Jess', 'Daniel', 'Mike', 'Amber', 'Walter', 'Adney',
@@ -97,12 +97,134 @@ let seedData = () => {
   {
     rootIsbn: 9781571311931, // World of Wonders: In Praise of Fireflies, Whale Sharks, and Other Astonishments (B&N Exclusive Gift Edition)
     genre: 'Nonfiction',
-    relatedBooks: []
+    relatedBooks: [
+      {
+        isbn: '4122189963635',
+        title: 'pariatur id sint',
+        author: 'Joe Smith',
+        genre: 'Nonfiction'
+      },
+      {
+        isbn: '8878675108493',
+        title: 'voluptate culpa id',
+        author: 'Ann Jones',
+        genre: 'Nonfiction'
+      },
+      {
+        isbn: '5295358919192',
+        title: 'et do incididunt',
+        author: 'Andy Cage',
+        genre: 'Nonfiction'
+      },
+      {
+        isbn: '2719906981322',
+        title: 'ex irure duis',
+        author: 'Jaxon Peony',
+        genre: 'Nonfiction'
+      },
+      {
+        isbn: '6406575419412',
+        title: 'aute id pariatur',
+        author: 'Alfonso Wilson',
+        genre: 'Nonfiction'
+      },
+      {
+        isbn: '7839772481636',
+        title: 'eiusmod cillum pariatur',
+        author: 'Alford Burdette',
+        genre: 'Nonfiction'
+      },
+      {
+        isbn: '2481732987414',
+        title: 'pariatur non anim',
+        author: 'Tony LeTiger',
+        genre: 'Nonfiction'
+      },
+      {
+        isbn: '6211819984756',
+        title: 'proident reprehenderit nulla',
+        author: 'John Jones',
+        genre: 'Nonfiction'
+      },
+      {
+        isbn: '6484958739042',
+        title: 'sint excepteur eu',
+        author: 'Nick Jones',
+        genre: 'Nonfiction'
+      },
+      {
+        isbn: '2691079544745',
+        title: 'exercitation nulla ipsum',
+        author: 'Beth Simpson',
+        genre: 'Nonfiction'
+      }
+    ]
   },
   {
     rootIsbn: 9780765326386, // Rhythm of War (Stormlight Archive Series #4)
     genre: 'Fiction',
-    relatedBooks: []
+    relatedBooks: [
+      {
+        isbn: '3549766819492',
+        title: 'ut voluptate deserunt',
+        author: 'Andrea Adamson',
+        genre: 'Fiction'
+      },
+      {
+        isbn: '4888082539964',
+        title: 'labore proident sunt',
+        author: 'Carol Baskins',
+        genre: 'Fiction'
+      },
+      {
+        isbn: '4653431348365',
+        title: 'ullamco labore minim',
+        author: 'Chloe Anne',
+        genre: 'Fiction'
+      },
+      {
+        isbn: '3336296187779',
+        title: 'incididunt quis deserunt',
+        author: 'Tony LeTiger',
+        genre: 'Fiction'
+      },
+      {
+        isbn: '3431282961667',
+        title: 'irure magna minim',
+        author: 'Emily Jackson',
+        genre: 'Fiction'
+      },
+      {
+        isbn: '8360466769743',
+        title: 'commodo pariatur elit',
+        author: 'Adam Biscuit',
+        genre: 'Fiction'
+      },
+      {
+        isbn: '8017965135457',
+        title: 'culpa dolore deserunt',
+        author: 'Tom Tomlinson',
+        genre: 'Fiction'
+      },
+      {
+        isbn: '2971458493741',
+        title: 'sint quis irure',
+        author: 'John Johnson',
+        genre: 'Fiction'
+      },
+      {
+        isbn: '1866703983316',
+        title: 'ea anim minim',
+        author: 'Captain Crunch',
+        genre: 'Fiction'
+      },
+      {
+        isbn: '2611572491071',
+        title: 'cillum nulla officia',
+        author: 'Andrew Swords',
+        genre: 'Fiction'
+      }
+    ]
   },
   {
     rootIsbn: 9780316187183, // The Trouble with Peace
@@ -140,71 +262,7 @@ let seedData = () => {
     relatedBooks: []
   },
 ]
-    // rootIsbn: '9780765326386',
-    // genre: 'Fantasy',
-    // relatedBooks: [
-    //   {
-    //     isbn: 9781524763169,
-    //     title: 'A Promised Land',
-    //     author: 'Barack Obama',
-    //     genre: 'Autobiography'
-    //   },
-    //   {
-    //     isbn: 9781571311931,
-    //     title: 'World of Wonders: In Praise of Fireflies, Whale Sharks, and Other Astonishments (B&N Exclusive Gift Edition)',
-    //     author: 'Aimee Nezhukumatathil',
-    //     genre: 'Nonfiction'
-    //   },
-    //   {
-    //     isbn: 9781250793676,
-    //     title: 'Rhythm of War (Signed Book) (Stormlight Archive Series #4)',
-    //     author: 'Brandon Sanderson',
-    //     genre: 'Fantasy'
-    //   },
-    //   {
-    //     isbn: 9780316187183,
-    //     title: 'The Trouble with Peace',
-    //     author: 'Joe Abercrombie',
-    //     genre: 'Fantasy'
-    //   },
-    //   {
-    //     isbn: 9780670020553,
-    //     title: 'The Magicians (Magicians Series #1)',
-    //     author: 'Lev Grossman',
-    //     genre: 'Graphic novel'
-    //   },
-    //   {
-    //     isbn: 9780765386489,
-    //     title: 'Soleri: A Novel',
-    //     author: 'Michael Johnston',
-    //     genre: 'Fantasy'
-    //   },
-    //   {
-    //     isbn: 9781250088482,
-    //     title: 'The Empire\'s Ghost: A Novel',
-    //     author: 'Isabelle Steiger',
-    //     genre: 'Fiction'
-    //   },
-    //   {
-    //     isbn: 9781524796372,
-    //     title: 'Lost Roses',
-    //     author: 'Martha Hall Kelly',
-    //     genre: 'Romance'
-    //   },
-    //   {
-    //     isbn: 9780062667632,
-    //     title: 'Leave the World Behind Alam',
-    //     author: 'Rumaan Alam',
-    //     genre: 'Nonfiction'
-    //   },
-    //   {
-    //     isbn: 9781982157999,
-    //     title: 'The Answer Is...: Reflections on My Life',
-    //     author: 'Alex Trebek',
-    //     genre: 'Diary'
-    //   },
-    // ]
-  // };
+
 
   for (var i = 0; i < 10; i++) {
     var random = Math.floor(Math.random() * 100);
@@ -217,12 +275,6 @@ let seedData = () => {
         genre: elem.genre
       })
     })
-    // results.relatedBooks.push({
-    //   isbn: isbn[random],
-    //   title: titles[random],
-    //   author: authors[random],
-    //   genre: category[random]
-    // })
   }
   return results;
 };
@@ -230,8 +282,8 @@ let seedData = () => {
 const sampleBooks = seedData();
 
 const insertSampleBooks = function() {
-  Book.create(sampleBooks)
-    .then(() => db.disconnect());
+  Book.Book.create(sampleBooks)
+    .then(() => mongoose.connection.close())
 };
 
 insertSampleBooks();

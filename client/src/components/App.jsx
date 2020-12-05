@@ -7,9 +7,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentBook: {isbn: '9780765326386', genre: 'Fantasy'},
       relatedBooks: [],
-      arrowDirection: 'left',
       leftArrow: true,
       rightArrow: false,
       isLoading: true,
@@ -21,8 +19,17 @@ class App extends React.Component {
     this.authorClick = this.authorClick.bind(this);
   }
 
-  getData(isbn) {
-    axios.get(`http://localhost:3004/products/${this.state.currentBook.isbn}/alsoBought`)
+  // TODO //
+// [] Proxy
+// [] Get carousel to seamlessly scroll like B&N site
+// [] V2 = cache actual data from Avigail's service as relatedBooks, instead of populating with fake data
+
+  getData() {
+    let queryUrl = window.location.search;
+    let urlParams = new URLSearchParams(queryUrl);
+    let paramIsbn = urlParams.get('isbn')
+
+    axios.get(`http://localhost:3004/products/${paramIsbn}/alsoBought`)
     .then(res => {
       this.setState({
         relatedBooks: res.data,
@@ -93,41 +100,28 @@ export default App;
 
 
 
-  // getData(isbn) {
-  //   axios.get(`http://localhost:3004/products/${this.state.currentBook.isbn}/alsoBought`)
-  //   .then((res) => {
-  //     let sameGenre = []
-  //     res.data[0].relatedBooks.map((related) => {
-  //       if (related.genre === this.state.currentBook.genre) {
-  //         sameGenre.push(related);
-  //       }
-  //     })
-  //     this.setState({
-  //       relatedBooks: sameGenre
-  //     })
-  //     return sameGenre;
-  //   })
-  //   .then((res) => {
-  //     return Promise.all([
-  //       axios.get(`http://localhost:8000/reviewssummary/${res[0].isbn}`),
-  //       axios.get(`http://localhost:8000/reviewssummary/${res[1].isbn}`),
-  //       axios.get(`http://localhost:8000/reviewssummary/${res[2].isbn}`),
-  //       axios.get(`http://localhost:8000/reviewssummary/${res[3].isbn}`),
-  //       axios.get(`http://localhost:8000/reviewssummary/${res[4].isbn}`),
-  //       axios.get(`http://localhost:8000/reviewssummary/${res[5].isbn}`),
-  //       axios.get(`http://localhost:8000/reviewssummary/${res[6].isbn}`),
-  //       axios.get(`http://localhost:8000/reviewssummary/${res[7].isbn}`),
-  //       axios.get(`http://localhost:8000/reviewssummary/${res[8].isbn}`),
-  //       axios.get(`http://localhost:8000/reviewssummary/${res[9].isbn}`),
-  //     ])
-  //   })
-  //   .then(([res1, res2, res3, res4, res5, res6, res7, res8, res9, res10]) => {
-  //     this.setState({
-  //       reviewsData: [res1.data, res2.data, res3.data, res4.data, res5.data, res6.data, res7.data, res8.data, res9.data, res10.data],
-  //       isLoading: false
-  //     })
-  //   })
-  //   .catch(err => {
-  //     console.log('PROMISE ALL Error:', err);
-  //   })
+
+
+//// If setting state w/ the URL ISBN param ////
+// state === // currentBookIsbn: {isbn: '', genre: ''},
+// bind === // this.getWindowParams = this.getWindowParams.bind(this);
+// function ===
+  // getWindowParams() {
+  //   // URL param: http://localhost:3004/?isbn=9780765326386
+  //   let queryUrl = window.location.search;
+  //   let urlParams = new URLSearchParams(queryUrl);
+  //   let paramIsbn = urlParams.get('isbn')
+  //   console.log(paramIsbn);
+  //   // console.log(urlParams.has('isbn'));
+
+  //   // pass getData into getWindowParams as a callback (avoid infinite loop)
+  //   // this.setState({
+  //   //   currentBookIsbn: paramIsbn.toString()
+  //   // }, () => {
+  //   //   console.log(this.state.currentBookIsbn)
+  //   //   this.getData()
+  //   // })
   // }
+
+  // in getData... // axios.get(`http://localhost:3004/products/${this.state.currentBookIsbn}/alsoBought`)
+
