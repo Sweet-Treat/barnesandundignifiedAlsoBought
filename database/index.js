@@ -42,56 +42,22 @@ module.exports.Book = Book;
 module.exports.getData = getData;
 
 
-// Now that I have my data, I need to pull data from other DBs
 
 /*
-TODO:
-1. [x] Research representing mongo collection of array of books w/ attributes
-2. [x] Rewrite schema
-3. [x] Refactor seeding script so it will write to the new schema
-4. [x] Render to the DOM the related books from DB
 
 Next steps:
-- What does algo look like?
+- What does "related books" algo look like?
 - How & when to request from other services?
-  - How to keep Ratings data current?
-  - Assume Product data is static
-*/
+  - How to keep Ratings data current? (cache to DB)
+  - Assume Product data is static (no cache)
+
+  w/ proxy, Get request if cached product array is empty. otherwise not.
 
 
-// FUTURE STEP: cache product data to DB // how to have array of book properties?
-// w/ proxy, Get request if cached product array is empty. otherwise not.
-
-// Cache to increase speed.
+  // Cache to increase speed.
   // Product info won't change frequently
-    // cache title, author, description immediately
+  // cache title, author, description immediately
   // Ratings info will change frequently
-    //
+  //
 
-
-
-// first attempt schema //
-// let bookSchema = mongoose.Schema({
-//   rootIsbn: String,
-//   isbn: String,
-//   title: String,
-//   author: String,
-//   rating: Number,
-//   category: String
-// });
-
-
-////
-// This is relational data I own
-// let bookSchema = mongoose.Schema({
-//   rootIsbn: String,
-//   relatedBooks: [{
-//     isbn: String,
-//     title: String,
-//     author: String,
-//     genre: String,
-//     rating: Number
-//   }]
-// })
-
-
+*/

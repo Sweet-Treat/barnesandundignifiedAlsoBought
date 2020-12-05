@@ -17,8 +17,8 @@ app.get('/products/:rootIsbn/alsoBought', (req, res) => {
     let relatedISBNs = res.relatedBooks.map((elem) => {
       return elem.isbn
     })
-    bulkData = res.relatedBooks;
-    return relatedISBNs;
+    bulkData = res.relatedBooks.slice(0, 10);
+    return relatedISBNs.slice(0, 10);
   })
   .then((relatedBookIsbns) => {
     return Promise.all([
@@ -65,16 +65,21 @@ app.get('/products/:rootIsbn/alsoBought', (req, res) => {
     res.send(data)
   })
   .catch((err) => {
-    console.log(err);
-  })
-  .finally(() => {
-    console.log('Server parsing complete')
+    console.log('Error with Server GET Promise:', err);
   })
 });
 
+app.listen(port, () => {
+  console.log(`Listening at http://localhost:${port}`);
+});
+
+
+
+
+
 
 // TODO //
-// [] Find ISBN from URL (ignore React Router info for now)
+// [X] Find ISBN from URL (ignore React Router info for now)
 // [X] Refactor DB to have 10 root ISBNs, and then 10 Related Books per root
     // Make all DB genre to match root ISBN
 // [X] Change get request to be server side
@@ -83,13 +88,6 @@ app.get('/products/:rootIsbn/alsoBought', (req, res) => {
   // 3. Get ratings data of those related books
   // send RES back as array of objects
   // What shape will I send back to React // refactor
-
-
-
-
-app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}`);
-});
 
 
   // Old server code. Temporarily keeping as a reference
