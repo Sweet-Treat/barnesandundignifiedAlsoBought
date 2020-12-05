@@ -97,68 +97,7 @@ let seedData = () => {
     {
       rootIsbn: 9781571311931, // World of Wonders: In Praise of Fireflies, Whale Sharks, and Other Astonishments (B&N Exclusive Gift Edition)
       genre: 'Nonfiction',
-      relatedBooks: [
-        {
-          isbn: '4122189963635',
-          title: 'pariatur id sint',
-          author: 'Joe Smith',
-          genre: 'Nonfiction'
-        },
-        {
-          isbn: '8878675108493',
-          title: 'voluptate culpa id',
-          author: 'Ann Jones',
-          genre: 'Nonfiction'
-        },
-        {
-          isbn: '5295358919192',
-          title: 'et do incididunt',
-          author: 'Andy Cage',
-          genre: 'Nonfiction'
-        },
-        {
-          isbn: '2719906981322',
-          title: 'ex irure duis',
-          author: 'Jaxon Peony',
-          genre: 'Nonfiction'
-        },
-        {
-          isbn: '6406575419412',
-          title: 'aute id pariatur',
-          author: 'Alfonso Wilson',
-          genre: 'Nonfiction'
-        },
-        {
-          isbn: '7839772481636',
-          title: 'eiusmod cillum pariatur',
-          author: 'Alford Burdette',
-          genre: 'Nonfiction'
-        },
-        {
-          isbn: '2481732987414',
-          title: 'pariatur non anim',
-          author: 'Tony LeTiger',
-          genre: 'Nonfiction'
-        },
-        {
-          isbn: '6211819984756',
-          title: 'proident reprehenderit nulla',
-          author: 'John Jones',
-          genre: 'Nonfiction'
-        },
-        {
-          isbn: '6484958739042',
-          title: 'sint excepteur eu',
-          author: 'Nick Jones',
-          genre: 'Nonfiction'
-        },
-        {
-          isbn: '2691079544745',
-          title: 'exercitation nulla ipsum',
-          author: 'Beth Simpson',
-          genre: 'Nonfiction'
-        }
-      ]
+      relatedBooks: []
     },
     {
       rootIsbn: 9780765326386, // Rhythm of War (Stormlight Archive Series #4)
@@ -234,7 +173,68 @@ let seedData = () => {
     {
       rootIsbn: 9780670020553, // The Magicians (Magicians Series #1)
       genre: 'Graphic novel',
-      relatedBooks: []
+      relatedBooks: [
+        {
+          isbn: '4122189963635',
+          title: 'pariatur id sint',
+          author: 'Joe Smith',
+          genre: 'Graphic novel'
+        },
+        {
+          isbn: '8878675108493',
+          title: 'voluptate culpa id',
+          author: 'Ann Jones',
+          genre: 'Graphic novel'
+        },
+        {
+          isbn: '5295358919192',
+          title: 'et do incididunt',
+          author: 'Andy Cage',
+          genre: 'Graphic novel'
+        },
+        {
+          isbn: '2719906981322',
+          title: 'ex irure duis',
+          author: 'Jaxon Peony',
+          genre: 'Graphic novel'
+        },
+        {
+          isbn: '6406575419412',
+          title: 'aute id pariatur',
+          author: 'Alfonso Wilson',
+          genre: 'Graphic novel'
+        },
+        {
+          isbn: '7839772481636',
+          title: 'eiusmod cillum pariatur',
+          author: 'Alford Burdette',
+          genre: 'Graphic novel'
+        },
+        {
+          isbn: '2481732987414',
+          title: 'pariatur non anim',
+          author: 'Tony LeTiger',
+          genre: 'Graphic novel'
+        },
+        {
+          isbn: '6211819984756',
+          title: 'proident reprehenderit nulla',
+          author: 'John Jones',
+          genre: 'Graphic novel'
+        },
+        {
+          isbn: '6484958739042',
+          title: 'sint excepteur eu',
+          author: 'Nick Jones',
+          genre: 'Graphic novel'
+        },
+        {
+          isbn: '2691079544745',
+          title: 'exercitation nulla ipsum',
+          author: 'Beth Simpson',
+          genre: 'Graphic novel'
+        }
+      ]
     },
     {
       rootIsbn: 9780765386489, // Soleri: A Novel
