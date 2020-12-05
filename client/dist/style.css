@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
-body {
+#also-bought body {
   font-family: 'Lato', sans-serif;
   background-color: whitesmoke;
   display: grid;
   /* place-items: center; */
 }
 
-.arrow {
+#also-bought .arrow {
   border: solid black;
   border-width: 0 3px 3px 0;
   display: inline-block;
@@ -17,7 +17,7 @@ body {
   /* margin-top: 140px */
 }
 
-.arrow:hover {
+#also-bought .arrow:hover {
   border: solid darkslategray;
   border-width: 0 3px 3px 0;
   display: inline-block;
@@ -27,18 +27,18 @@ body {
   cursor:pointer;
 }
 
-.right {
+#also-bought .right {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
   margin-right: 15px;
 }
-.left {
+#also-bought .left {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
   margin-left: 15px;
 }
 
-.carousel {
+#also-bought .carousel {
   display:grid;
   grid-auto-flow:column;
   grid-gap:5px;
@@ -49,19 +49,19 @@ body {
   align-items: top;
 }
 
-.carousel ul {
+#also-bought .carousel ul {
   margin: 0;
   padding: 0;
   width: 90%;
   text-align: center;
 }
 
-.image {
+#also-bought .image {
   width: 140px;
   height: 190px;
 }
 
-.header {
+#also-bought .header {
   display: grid;
   font-size: 25px;
   width: 100%;
@@ -73,13 +73,13 @@ body {
 
 }
 
-.header:before,
-.header:after {
+#also-bought .header:before,
+#also-bought .header:after {
   content: '';
   border-top: 2px solid;
 }
 
-#stars {
+#also-bought #stars {
   size: 5px;
 }
 /*
