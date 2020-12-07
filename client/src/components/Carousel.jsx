@@ -25,7 +25,7 @@ let Carousel = (props) => {
         <ul className="book">
           <img className="image" onClick={() => { props.titleClick(title); }} src={elem.img}></img><br/>
           <div className="title" onClick={() => { props.titleClick(title); }}>{title}</div>
-          <div onClick={() => { props.authorClick(elem.author); }}>by {elem.author}</div>
+          <div className="author" onClick={() => { props.authorClick(elem.author); }}>by {elem.author}</div>
           <div>
             <StarRatings
               rating={elem.avgRating}
