@@ -23,6 +23,7 @@ class App extends React.Component {
   // [] Proxy
   // [] Get carousel to seamlessly scroll like B&N site
   // [] Error handling of undefined ratings data
+  // [] Add key to all maps
   // [] V2 = cache actual data from Avigail's service as relatedBooks, instead of populating with fake data
 
   getData() {
@@ -67,7 +68,7 @@ class App extends React.Component {
   }
 
   titleClick(title) {
-    alert (`Redirecting to ${title}`);
+    alert (`Redirecting to your next book: ${title}`);
   }
 
   authorClick(author) {
@@ -88,7 +89,7 @@ class App extends React.Component {
           rightArrow={this.state.rightArrow}
           leftClick={this.leftClick}
           rightClick={this.rightClick}
-          titleClick={this.authorClick}
+          titleClick={this.titleClick}
           authorClick={this.authorClick}
         />
       </div>

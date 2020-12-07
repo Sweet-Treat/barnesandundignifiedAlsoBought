@@ -42,7 +42,7 @@ let Carousel = (props) => {
 
   return (
     <div>
-      <div style={{display: 'flex'}}>
+      <div className='enclosure' style={{display: 'flex'}}>
         <p><i className="arrow left" onClick={props.leftClick}></i></p>
         {mapRelatedBooks.slice(0, 7)}
         <p><i className="arrow right" onClick={props.rightClick}></i></p>
