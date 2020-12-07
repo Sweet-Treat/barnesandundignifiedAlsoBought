@@ -65,6 +65,16 @@
   height: 190px;
 }
 
+#also-bought .image:hover {
+  cursor:pointer;
+}
+#also-bought .title:hover {
+  cursor:pointer;
+}
+#also-bought .author:hover {
+  cursor:pointer;
+}
+
 #also-bought .header:before,
 #also-bought .header:after {
   content: '';
