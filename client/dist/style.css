@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
 #also-bought {
-  padding: 2.25rem 5.35rem;
-  width: 1024px;
-  /* display: flex; */
-  position: relative;
+  display: flex;
   line-height: 1.5;
+  margin-left:auto;
+  margin-right: auto;
+}
+
+#also-bought .book-carousel {
+  position: center;
   margin-left: auto;
   margin-right: auto;
 }
@@ -56,7 +59,7 @@
   display:grid;
   grid-auto-flow:column;
   grid-gap:5px;
-  margin:5px;
+  /* margin:5px; */
   /* overflow:auto; */
   height: 425px;
   /* width: 40%; */
@@ -84,6 +87,9 @@
 #also-bought .author:hover {
   cursor:pointer;
 }
+#also-bought .stars:hover {
+  cursor:pointer;
+}
 
 #also-bought .header:before,
 #also-bought .header:after {
@@ -108,6 +114,9 @@
 #also-bought #stars {
   size: 5px;
 }
+
+
+
 /*
 image carousel
   - horizontal scroll

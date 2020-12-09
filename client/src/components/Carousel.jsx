@@ -21,12 +21,11 @@ let Carousel = (props) => {
     }
 
     return (
-      <div className="carousel">
         <ul className="book">
           <img className="image" onClick={() => { props.titleClick(title); }} src={elem.img}></img><br/>
           <div className="title" onClick={() => { props.titleClick(title); }}>{title}</div>
           <div className="author" onClick={() => { props.authorClick(elem.author); }}>by {elem.author}</div>
-          <div>
+          <div className="stars">
             <StarRatings
               rating={elem.avgRating}
               starDimension="20px"
@@ -36,15 +35,14 @@ let Carousel = (props) => {
             />
           </div>
         </ul>
-      </div>
     );
   });
 
   return (
     <div>
-      <div className='enclosure' style={{display: 'flex'}}>
+      <div className='carousel'>
         <p><i className="arrow left" onClick={props.leftClick}></i></p>
-        {mapRelatedBooks.slice(0, 7)}
+        {mapRelatedBooks}
         <p><i className="arrow right" onClick={props.rightClick}></i></p>
       </div>
     </div>
@@ -58,6 +56,9 @@ export default Carousel;
 // TODO
 // - carousel doesn't "scroll" seamlessly
 // FUTURE CSS - get arrow to gray out and No-Action if all the way to the right or left
+
+
+// <div className='carousel' style={{display: 'flex'}}>
 
 ////////
 
