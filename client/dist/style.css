@@ -7,19 +7,20 @@
   margin-right: auto;
 }
 
-#also-bought .book-carousel {
-  position: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 #also-bought body {
   font-family: 'Lato', sans-serif;
   background-color: whitesmoke;
   display: grid;
-  /* place-items: center; */
 }
 
+#also-bought .books-carousel {
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: min-content;
+}
+
+/*** Arrow Styling ***/
 #also-bought .arrow {
   border: solid black;
   border-width: 0 3px 3px 0;
@@ -27,7 +28,6 @@
   padding: 6px;
   position: center;
   margin-top: 100px;
-  /* margin-top: 140px */
 }
 
 #also-bought .arrow:hover {
@@ -45,94 +45,72 @@
   -webkit-transform: rotate(-45deg);
   margin-right: 15px;
 }
+
 #also-bought .left {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
   margin-left: 15px;
 }
 
-/* #also-bought .enclosure {
-  align-items: center;
-} */
-
+/*** Book Display Styling ***/
 #also-bought .carousel {
   display:grid;
   grid-auto-flow:column;
-  grid-gap:5px;
-  /* margin:5px; */
-  /* overflow:auto; */
-  height: 425px;
-  /* width: 40%; */
+  grid-gap:20px;
+  height: 325px;
   align-items: top;
+  text-align: center;
+  /* overflow:auto; */
 }
 
 #also-bought .carousel ul {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   width: 90%;
-  text-align: center;
+  /* text-align: center; */
 }
 
 #also-bought .image {
-  width: 140px;
-  height: 190px;
+  width: 150px;
+  height: 200px;
 }
 
 #also-bought .image:hover {
   cursor:pointer;
 }
+
 #also-bought .title:hover {
   cursor:pointer;
 }
+
 #also-bought .author:hover {
   cursor:pointer;
 }
+
 #also-bought .stars:hover {
   cursor:pointer;
 }
 
+/*** Header Styling ***/
 #also-bought .header:before,
 #also-bought .header:after {
   content: '';
   border-top: 2px solid;
   margin: 15px;
-  color: darkgray
+  color: darkgray;
 }
 
 #also-bought .header {
   display: grid;
   font-size: 25px;
-  width: 1100px;
   align-items: center;
   text-align: center;
   grid-template-columns: minmax(20px, 1fr) auto minmax(20px, 1fr);
   grid-gap: 20px;
   font-family: 'Merriweather', serif;
-  /* max-width: 100% !important; */
 }
 
+/*** Star Rating Styling ***/
 #also-bought #stars {
   size: 5px;
 }
-
-
-
-/*
-image carousel
-  - horizontal scroll
-  - text stacked vertically
-  - display 7 by default
-  - scroll displays remaining 3
-  - arrows on left and right (onClick event)
-
-  convert rating to stars
-  -
-
-  display dummy image
-  - heart icon
-  - preview icon
-
-DONE - add lines next to header
-*/
-
-/* // people reviews product search  */

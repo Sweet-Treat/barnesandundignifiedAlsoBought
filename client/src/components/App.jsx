@@ -81,7 +81,7 @@ class App extends React.Component {
     }
 
     return (
-      <div className="book-carousel">
+      <div className="books-carousel">
         <Header />
         <Carousel
           relatedBooks={this.state.relatedBooks}
