@@ -21,7 +21,7 @@ let Carousel = (props) => {
     }
 
     return (
-        <ul className="book">
+        <ul className="book" key={index}>
           <img className="image" onClick={() => { props.titleClick(title); }} src={elem.img}></img><br/>
           <div className="title" onClick={() => { props.titleClick(title); }}>{title}</div>
           <div className="author" onClick={() => { props.authorClick(elem.author); }}>by {elem.author}</div>
