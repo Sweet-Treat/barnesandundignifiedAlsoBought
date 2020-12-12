@@ -20,11 +20,11 @@ class App extends React.Component {
   }
 
   // TODO //
-  // [] Proxy
+  // [X] Error handling of undefined ratings data
   // [] Get carousel to seamlessly scroll like B&N site
-  // [] Error handling of undefined ratings data
-  // [] Add key to all maps
   // [] V2 = cache actual data from Avigail's service as relatedBooks, instead of populating with fake data
+  // [] Add key to all React map functions
+  // [] Proxy refactor on server-side
 
   getData() {
     let queryUrl = window.location.search;

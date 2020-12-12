@@ -21,18 +21,11 @@ app.get('/products/:rootIsbn/alsoBought', (req, res) => {
       return relatedISBNs.slice(0, 10);
     })
     .then((relatedBookIsbns) => {
-      return Promise.all([
-        axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[0])}/reviews/summary`),
-        axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[1])}/reviews/summary`),
-        axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[2])}/reviews/summary`),
-        axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[3])}/reviews/summary`),
-        axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[4])}/reviews/summary`),
-        axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[5])}/reviews/summary`),
-        axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[6])}/reviews/summary`),
-        axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[7])}/reviews/summary`),
-        axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[8])}/reviews/summary`),
-        axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[9])}/reviews/summary`)
-      ]);
+      return Promise.all(
+        relatedBookIsbns.map(isbn => {
+          return axios.get(`http://localhost:8000/books/${isbn}/reviews/summary`).catch((err) => {return null})
+        })
+      );
     })
     .then((ratingsData) => {
       let randomImages = [
@@ -49,15 +42,27 @@ app.get('/products/:rootIsbn/alsoBought', (req, res) => {
       ];
 
       let combinedData = bulkData.map((bulk, index) => {
-        return {
-          _id: bulk.id,
-          isbn: bulk.isbn,
-          title: bulk.title,
-          author: bulk.author,
-          genre: bulk.genre,
-          avgRating: ratingsData[index].data.avgRating,
-          img: randomImages[index]
-        };
+        if (!ratingsData[index]) {
+          return {
+            _id: bulk.id,
+            isbn: bulk.isbn,
+            title: bulk.title,
+            author: bulk.author,
+            genre: bulk.genre,
+            avgRating: 0,
+            img: randomImages[index]
+          };
+        } else {
+          return {
+            _id: bulk.id,
+            isbn: bulk.isbn,
+            title: bulk.title,
+            author: bulk.author,
+            genre: bulk.genre,
+            avgRating: ratingsData[index].data.avgRating,
+            img: randomImages[index]
+          };
+        }
       });
       return combinedData;
     })
@@ -100,3 +105,18 @@ app.listen(port, () => {
 //     return data;
 //   }
 // })
+
+// Old Promise.all get requests. Keeping since they serve as a test for invalid GET requests to Nathan's service.
+//   [
+//   axios.get(`http://localhost:8000/books/343434/reviews/summary`).catch(err => {return null}),
+//   // axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[0])}/reviews/summary`),
+//   axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[1])}/reviews/summary`),
+//   axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[2])}/reviews/summary`),
+//   axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[3])}/reviews/summary`),
+//   axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[4])}/reviews/summary`),
+//   axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[5])}/reviews/summary`),
+//   axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[6])}/reviews/summary`),
+//   axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[7])}/reviews/summary`),
+//   axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[8])}/reviews/summary`),
+//   axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[9])}/reviews/summary`)
+// ]
