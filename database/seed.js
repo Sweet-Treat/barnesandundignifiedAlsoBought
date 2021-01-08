@@ -282,8 +282,14 @@ let seedData = () => {
 const sampleBooks = seedData();
 
 const insertSampleBooks = function() {
+  console.log(sampleBooks)
   Book.Book.create(sampleBooks)
-    .then(() => mongoose.connection.close());
+    .then((res) =>
+      console.log('result:', res))
+      // mongoose.connection.close())
+    .catch((err) => console.log(err));
 };
 
-insertSampleBooks();
+setTimeout(function() {
+  insertSampleBooks()
+}, 10000); //set timeout 15 seconds to avoid async issue (brute force)

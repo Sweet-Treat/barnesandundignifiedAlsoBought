@@ -1,9 +1,18 @@
 const mongoose = require('mongoose');
+const username = ''; // use VIM to enter username
+const pwd = ''; // use VIM to enter pwd
 
 mongoose.connect(
-  'mongodb://localhost/relatedbooks',
+  // 'mongodb://localhost/relatedbooks',
+  `mongodb://${username}:${pwd}@13.56.194.29:27017/relatedbooks`,
   {useUnifiedTopology: true, useNewUrlParser: true},
-  () => { console.log('Connected to database!'); }
+  (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('Connected to database!');
+    }
+  }
 );
 
 const RelatedBooks = mongoose.Schema({

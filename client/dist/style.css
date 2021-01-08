@@ -54,23 +54,33 @@
 
 /*** Book Display Styling ***/
 #also-bought .carousel {
-  display:grid;
+  /* display:grid; */
+  display: flex;
   grid-auto-flow:column;
   grid-gap:20px;
   height: 325px;
   align-items: top;
   text-align: center;
   /* overflow:auto; */
+  /* scroll-snap-type: x mandatory;
+  overflow-x: scroll;
+  scroll-behavior: smooth; */
 }
 
 #also-bought .carousel ul {
   margin: 0px;
   padding: 0px;
   width: 90%;
-  /* text-align: center; */
+}
+
+#also-bought .book {
+  width: 100%;
+  /* flex-shrink: 0;
+  scroll-snap-align: start; */
 }
 
 #also-bought .image {
+  display: block;
   width: 150px;
   height: 200px;
 }

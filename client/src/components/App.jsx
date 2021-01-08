@@ -22,16 +22,19 @@ class App extends React.Component {
   // TODO //
   // [X] Error handling of undefined ratings data
   // [] Get carousel to seamlessly scroll like B&N site
+    // CUT A NEW BRANCH ("scrolling")
   // [] V2 = cache actual data from Avigail's service as relatedBooks, instead of populating with fake data
-  // [] Add key to all React map functions
-  // [] Proxy refactor on server-side
+    // CUT A NEW BRANCH
+  // [X] Add key to all React map functions
+  // [N/A] Proxy refactor on server-side (not needed)
 
   getData() {
     let queryUrl = window.location.search;
     let urlParams = new URLSearchParams(queryUrl);
     let paramIsbn = urlParams.get('isbn');
 
-    axios.get(`http://localhost:3004/products/${paramIsbn}/alsoBought`)
+    // axios.get(`http://localhost:3004/products/${paramIsbn}/alsoBought`)
+    axios.get(`http://54.183.241.255:3004/products/${paramIsbn}/alsoBought`)
       .then(res => {
         this.setState({
           relatedBooks: res.data,
