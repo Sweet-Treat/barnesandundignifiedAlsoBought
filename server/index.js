@@ -23,7 +23,8 @@ app.get('/products/:rootIsbn/alsoBought', (req, res) => {
     .then((relatedBookIsbns) => {
       return Promise.all(
         relatedBookIsbns.map(isbn => {
-          return axios.get(`http://localhost:8000/books/${isbn}/reviews/summary`).catch((err) => {return null})
+          // return axios.get(`http://localhost:8000/books/${isbn}/reviews/summary`).catch((err) => {return null})
+          return axios.get(`http://3.140.58.207:8000//books/${isbn}/reviews/summary`).catch((err) => {return null})
         })
       );
     })
