@@ -23,8 +23,8 @@ app.get('/products/:rootIsbn/alsoBought', (req, res) => {
     .then((relatedBookIsbns) => {
       return Promise.all(
         relatedBookIsbns.map(isbn => {
-          // return axios.get(`http://localhost:8000/books/${isbn}/reviews/summary`).catch((err) => {return null})
-          return axios.get(`http://3.140.58.207:8000/books/${isbn}/reviews/summary`).catch((err) => {return null})
+          return axios.get(`http://localhost:8000/books/${isbn}/reviews/summary`).catch((err) => {return null})
+          // return axios.get(`http://3.140.58.207:8000/books/${isbn}/reviews/summary`).catch((err) => {return null})
         })
       );
     })
@@ -84,16 +84,8 @@ app.listen(port, () => {
 
 
 
-// TODO //
-// [X] Find ISBN from URL (ignore React Router info for now)
-// [X] Refactor DB to have 10 root ISBNs, and then 10 Related Books per root
-// Make all DB genre to match root ISBN
-// [X] Change get request to be server side
-// 1. Get root ISBN (already have in line 13)
-// 2. Get related books to that root ISBN
-// 3. Get ratings data of those related books
-// send RES back as array of objects
-// What shape will I send back to React // refactor
+
+
 
 
 // Old server code. Temporarily keeping as a reference
@@ -106,18 +98,3 @@ app.listen(port, () => {
 //     return data;
 //   }
 // })
-
-// Old Promise.all get requests. Keeping since they serve as a test for invalid GET requests to Nathan's service.
-//   [
-//   axios.get(`http://localhost:8000/books/343434/reviews/summary`).catch(err => {return null}),
-//   // axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[0])}/reviews/summary`),
-//   axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[1])}/reviews/summary`),
-//   axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[2])}/reviews/summary`),
-//   axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[3])}/reviews/summary`),
-//   axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[4])}/reviews/summary`),
-//   axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[5])}/reviews/summary`),
-//   axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[6])}/reviews/summary`),
-//   axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[7])}/reviews/summary`),
-//   axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[8])}/reviews/summary`),
-//   axios.get(`http://localhost:8000/books/${Number(relatedBookIsbns[9])}/reviews/summary`)
-// ]

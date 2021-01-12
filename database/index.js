@@ -3,8 +3,8 @@ const username = ''; // use VIM to enter username
 const pwd = ''; // use VIM to enter pwd
 
 mongoose.connect(
-  // 'mongodb://localhost/relatedbooks',
-  `mongodb://${username}:${pwd}@13.56.194.29:27017/relatedbooks`,
+  'mongodb://localhost/relatedbooks',
+  // `mongodb://${username}:${pwd}@13.56.194.29:27017/relatedbooks`,
   {useUnifiedTopology: true, useNewUrlParser: true},
   (err) => {
     if (err) {
@@ -23,10 +23,6 @@ const RelatedBooks = mongoose.Schema({
 });
 // "ratings" intentionally left off Schema.
 // This will be directly pulled from Reviews service.
-
-// build V1 w/o ratings, and simply build to GET ratings from Nathan's data.
-// RATINGS DEFAULT in case Nathan's service is down
-// Pull down Nathan's service, run locally, try to get Ratings from his service
 
 const BookSchema = mongoose.Schema({
   rootIsbn: String,

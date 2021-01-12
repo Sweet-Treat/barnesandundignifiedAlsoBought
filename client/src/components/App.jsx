@@ -33,8 +33,8 @@ class App extends React.Component {
     let urlParams = new URLSearchParams(queryUrl);
     let paramIsbn = urlParams.get('isbn');
 
-    // axios.get(`http://localhost:3004/products/${paramIsbn}/alsoBought`)
-    axios.get(`http://54.183.241.255:3004/products/${paramIsbn}/alsoBought`)
+    axios.get(`http://localhost:3004/products/${paramIsbn}/alsoBought`)
+    // axios.get(`http://54.183.241.255:3004/products/${paramIsbn}/alsoBought`)
       .then(res => {
         this.setState({
           relatedBooks: res.data,

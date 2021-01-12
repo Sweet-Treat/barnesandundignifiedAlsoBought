@@ -12,7 +12,7 @@ let Carousel = (props) => {
   }
 
   let mapRelatedBooks = limitProductData.map((elem, index) => {
-    // Title's longer than 35 characters long are truncated with "..."
+    // Titles longer than 35 characters long are truncated with "..."
     let title = '';
     if (elem.title.length > 35) {
       title = elem.title.substring(0, 35) + '...';
@@ -53,12 +53,8 @@ export default Carousel;
 
 
 
-// TODO
-// - carousel doesn't "scroll" seamlessly
-// FUTURE CSS - get arrow to gray out and No-Action if all the way to the right or left
 
 
-// <div className='carousel' style={{display: 'flex'}}>
 
 ////////
 
@@ -75,48 +71,5 @@ export default Carousel;
 
 ////////
 
-////CHANGED DATA MANIPULATION TO LIVE ON SERVER. TEMPORARILY KEEPING FOR REFERENCE////
-// // Algo to confirm the same Book Genre, then limit to 7 viewable books depending on which arrow is clicked
-//   // Left arrow clicked
-//   if (props.books.leftArrow === true) {
-//     productData.forEach(relatedBook => {
-//       if (originalGenre === relatedBook.genre) {
-//         limitRelatedBooks.push(relatedBook)
-//       }
-//     })
-//     limitRelatedBooks = limitRelatedBooks.slice(0,7);
-//     for (var i = 0; i < reviewsData.length; i++) {
-//       if (reviewsData[i] !== reviewsData[i+1]) {
-//         limitReviews = reviewsData.slice(0, 7);
-//       }
-//     }
-//     limitImages = randomImages.slice(0,7);
 
-//   // Right arrow clicked
-//   } else {
-//     productData.forEach(relatedBook => {
-//       if (originalGenre === relatedBook.genre) {
-//         limitRelatedBooks.push(relatedBook)
-//       }
-//     })
-//     limitRelatedBooks = limitRelatedBooks.slice(3,10);
-//     for (var j = 0; j < reviewsData.length; j++) {
-//       if (reviewsData[j] !== reviewsData[j+1]) {
-//         limitReviews = reviewsData.slice(3, 10);
-//       }
-//     }
-//     limitImages= randomImages.slice(3,10);
-//   }
-
-// // Combine data from both DBs after filtered above
-// for (var i = 0; i < limitRelatedBooks.length; i++) {
-//   combinedDB[i] = {
-//     author: limitRelatedBooks[i].author,
-//     genre: limitRelatedBooks[i].genre,
-//     isbn: limitRelatedBooks[i].isbn,
-//     title: limitRelatedBooks[i].title,
-//     _id: limitRelatedBooks[i]._id,
-//     totalReviews: limitReviews[i].totalReviews,
-//     avgRating: limitReviews[i].avgRating
-//   }
-// }
+// <div className='carousel' style={{display: 'flex'}}>
