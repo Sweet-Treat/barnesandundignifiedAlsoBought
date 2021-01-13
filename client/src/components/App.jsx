@@ -34,7 +34,7 @@ class App extends React.Component {
     let paramIsbn = urlParams.get('isbn');
 
     // axios.get(`http://localhost:3004/products/${paramIsbn}/alsoBought`)
-    axios.get(`http://54.183.241.255:3004/products/${paramIsbn}/alsoBought`)
+    axios.get(`http://54.176.137.254:3004/products/${paramIsbn}/alsoBought`)
       .then(res => {
         this.setState({
           relatedBooks: res.data,
@@ -80,8 +80,14 @@ class App extends React.Component {
 
   render() {
     if (this.state.isLoading) {
-      return (<h1 style={{textAlign: 'center'}}>Loading...</h1>);
-    }
+      return (
+      <div>
+        <div className="header">
+          <Header />
+        </div>
+        <h1 style={{textAlign: 'center'}}>Loading...</h1>
+      </div>
+      )}
 
     return (
       <div className="books-carousel">
