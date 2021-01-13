@@ -102,14 +102,6 @@
 }
 
 /*** Header Styling ***/
-#also-bought .header:before,
-#also-bought .header:after {
-  content: '';
-  border-top: 2px solid;
-  margin: 15px;
-  color: darkgray;
-}
-
 #also-bought .header {
   display: grid;
   font-size: 25px;
@@ -118,6 +110,14 @@
   grid-template-columns: minmax(20px, 1fr) auto minmax(20px, 1fr);
   grid-gap: 20px;
   font-family: 'Merriweather', serif;
+}
+
+#also-bought .header:before,
+#also-bought .header:after {
+  content: '';
+  border-top: 2px solid;
+  margin: 15px;
+  color: darkgray;
 }
 
 /*** Star Rating Styling ***/

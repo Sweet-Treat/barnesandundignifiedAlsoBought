@@ -3,8 +3,8 @@ const username = ''; // use VIM to enter username
 const pwd = ''; // use VIM to enter pwd
 
 mongoose.connect(
-  'mongodb://localhost/relatedbooks',
-  // `mongodb://${username}:${pwd}@13.56.194.29:27017/relatedbooks`,
+  // 'mongodb://localhost/relatedbooks',
+  `mongodb://${username}:${pwd}@52.9.216.153:27017/relatedbooks`,
   {useUnifiedTopology: true, useNewUrlParser: true},
   (err) => {
     if (err) {
