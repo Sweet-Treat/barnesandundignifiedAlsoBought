@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const username = 'adminfec'; // use VIM to enter username
-const pwd = 'hrEC2db'; // use VIM to enter pwd
+const username = ''; // use VIM to enter username
+const pwd = ''; // use VIM to enter pwd
 
 mongoose.connect(
   // 'mongodb://localhost/relatedbooks',
