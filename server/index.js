@@ -76,7 +76,7 @@ app.get('/products/:rootIsbn/alsoBought', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Listening on ${port}`);
+  console.log(`Listening on port ${port}`);
 });
 
 
