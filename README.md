@@ -2,10 +2,11 @@
 
 > The objective of the Front End Capstone is to build a fullstack application emulating a single product page of a real company. Our project will mimic the product page of a book in the Barnes and Noble site, broken out into four separate components: (1) product details, (2) e-commerce functionality, (3) related books, and (4) reviews. My product was the related books section, which consists of an image carousel populated with related books that other customers bought.
 
-![Product Carousel](./Carousel_ISBN_9780670020553.png?raw=true)
+### My Service: Product Carousel
+![Product Carousel](./images/Carousel_ISBN_9780670020553.png?raw=true)
 
-![Entire Service](./Proxy_ISBN_9780670020553.png?raw=true)
-
+### All Services
+![Entire Service](./images/Proxy_ISBN_9780670020553.png?raw=true)
 
 
 ## Related Projects
