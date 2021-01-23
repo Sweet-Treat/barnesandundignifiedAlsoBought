@@ -10,10 +10,10 @@
 
 ## Table of Contents
 
-1. [Related Projects](#relatedProjects)
-2. [Getting Started](#gettingStarted)
+1. [Related Projects](#related-projects)
+2. [Getting Started](#getting-started)
 3. [Requirements](#requirements)
-4. [Technologies Used](#technologiesUsed)
+4. [Technologies Used](#technologies-used)
 
 ## Related Projects
 #### Teammate repos
