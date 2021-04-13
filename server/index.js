@@ -23,7 +23,6 @@ app.get('/products/:rootIsbn/alsoBought', (req, res) => {
     .then((relatedBookIsbns) => {
       return Promise.all(
         relatedBookIsbns.map(isbn => {
-          // return axios.get(`http://localhost:8000/books/${isbn}/reviews/summary`).catch((err) => {return null})
           return axios.get(`http://3.140.58.207:8000/books/${isbn}/reviews/summary`).catch((err) => {return null}) // Review service EC2 URL
         })
       );
@@ -78,23 +77,3 @@ app.get('/products/:rootIsbn/alsoBought', (req, res) => {
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-
-
-
-
-
-
-
-
-
-
-// Old server code. Temporarily keeping as a reference
-// db.getData(req, (err, data) => {
-//   if (err) {
-//     res.status(500).send(err);
-//   } else {
-//     // console.log(data[0].relatedBooks)
-//     // res.status(200).send(data);
-//     return data;
-//   }
-// })

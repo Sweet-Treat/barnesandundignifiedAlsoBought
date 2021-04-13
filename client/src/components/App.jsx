@@ -19,21 +19,11 @@ class App extends React.Component {
     this.authorClick = this.authorClick.bind(this);
   }
 
-  // TODO //
-  // [X] Error handling of undefined ratings data
-  // [] Get carousel to seamlessly scroll like B&N site
-    // CUT A NEW BRANCH ("scrolling")
-  // [] V2 = cache actual data from Avigail's service as relatedBooks, instead of populating with fake data
-    // CUT A NEW BRANCH
-  // [X] Add key to all React map functions
-  // [N/A] Proxy refactor on server-side (not needed)
-
   getData() {
     let queryUrl = window.location.search;
     let urlParams = new URLSearchParams(queryUrl);
     let paramIsbn = urlParams.get('isbn');
 
-    // axios.get(`http://localhost:3004/products/${paramIsbn}/alsoBought`)
     axios.get(`http://54.176.137.254:3004/products/${paramIsbn}/alsoBought`)
       .then(res => {
         this.setState({
@@ -107,32 +97,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-
-
-
-
-
-//// If setting state w/ the URL ISBN param ////
-// state === // currentBookIsbn: {isbn: '', genre: ''},
-// bind === // this.getWindowParams = this.getWindowParams.bind(this);
-// function ===
-// getWindowParams() {
-//   // URL param: http://localhost:3004/?isbn=9780765326386
-//   let queryUrl = window.location.search;
-//   let urlParams = new URLSearchParams(queryUrl);
-//   let paramIsbn = urlParams.get('isbn')
-//   console.log(paramIsbn);
-//   // console.log(urlParams.has('isbn'));
-
-//   // pass getData into getWindowParams as a callback (avoid infinite loop)
-//   // this.setState({
-//   //   currentBookIsbn: paramIsbn.toString()
-//   // }, () => {
-//   //   console.log(this.state.currentBookIsbn)
-//   //   this.getData()
-//   // })
-// }
-
-// in getData... // axios.get(`http://localhost:3004/products/${this.state.currentBookIsbn}/alsoBought`)
-

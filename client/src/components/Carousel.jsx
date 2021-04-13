@@ -50,26 +50,3 @@ let Carousel = (props) => {
 };
 
 export default Carousel;
-
-
-
-
-
-
-////////
-
-// V2 CONSIDERATIONS //
-// page load time can be slow = on page load asking service every time for data
-// next iteration = cache data to enable faster render
-
-// "RELATED" ALGO IDEAS
-// What do I need to get from other services?
-// Fulfillment service/purchase history
-// What are other orders if someone bought this book?
-// Which should we show? (genre)
-// Most frequently purchased book in genre
-
-////////
-
-
-// <div className='carousel' style={{display: 'flex'}}>

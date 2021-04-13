@@ -286,7 +286,6 @@ const insertSampleBooks = function() {
   Book.Book.create(sampleBooks)
     .then((res) =>
       console.log('result:', res))
-      // mongoose.connection.close())
     .catch((err) => console.log(err));
 };
 

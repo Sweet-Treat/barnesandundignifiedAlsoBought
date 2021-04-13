@@ -3,7 +3,6 @@ const username = ''; // use VIM to enter username
 const pwd = ''; // use VIM to enter pwd
 
 mongoose.connect(
-  // 'mongodb://localhost/relatedbooks',
   `mongodb://${username}:${pwd}@52.9.216.153:27017/relatedbooks`,
   {useUnifiedTopology: true, useNewUrlParser: true},
   (err) => {
@@ -21,7 +20,7 @@ const RelatedBooks = mongoose.Schema({
   author: String,
   genre: String,
 });
-// "ratings" intentionally left off Schema.
+// "Ratings" intentionally left off Schema.
 // This will be directly pulled from Reviews service.
 
 const BookSchema = mongoose.Schema({
@@ -33,7 +32,6 @@ const BookSchema = mongoose.Schema({
 let Book = mongoose.model('Book', BookSchema);
 
 let getData = (isbn, callback) => {
-  // console.log(isbn.params.rootIsbn)
   Book.find({rootIsbn: isbn.params.rootIsbn}, (err, data) => {
     if (err) {
       callback(err, null);
@@ -45,24 +43,3 @@ let getData = (isbn, callback) => {
 
 module.exports.Book = Book;
 module.exports.getData = getData;
-
-
-
-/*
-
-Next steps:
-- What does "related books" algo look like?
-- How & when to request from other services?
-  - How to keep Ratings data current? (cache to DB)
-  - Assume Product data is static (no cache)
-
-  w/ proxy, Get request if cached product array is empty. otherwise not.
-
-
-  // Cache to increase speed.
-  // Product info won't change frequently
-  // cache title, author, description immediately
-  // Ratings info will change frequently
-  //
-
-*/
